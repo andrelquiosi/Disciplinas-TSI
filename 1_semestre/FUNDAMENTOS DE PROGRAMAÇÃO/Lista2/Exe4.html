@@ -1,0 +1,25 @@
+<meta charset="utf-8" />
+
+<script>
+  //     4- Faça um algoritmo que calcule o lucro em reais obtido com todas as unidades de um determinado produto. O usuário
+  // deverá informar o nome do produto, o preço de custo, o preço de venda, e a quantidade de itens vendidos.
+
+  var lucro, nomeProd, precCusto, precVenda, quantVend;
+
+  nomeProd = prompt("Informe o Nome do Produto: ");
+  precCusto = parseFloat(prompt("Informe o preço de custo: "));
+  precVenda = parseFloat(prompt("Informe o preço de venda: "));
+  quantVend = parseInt(prompt("Informe a quantidade vendida: "));
+
+  lucro = (precVenda - precCusto) * quantVend;
+
+  document.write(
+    "O item ",
+    nomeProd,
+    " gerou um lucro de R$",
+    lucro.toFixed(2),
+    " com ",
+    quantVend,
+    " peças vendidas."
+  );
+</script>

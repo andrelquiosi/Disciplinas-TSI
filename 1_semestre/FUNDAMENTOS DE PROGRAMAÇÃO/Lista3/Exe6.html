@@ -1,0 +1,27 @@
+<!-- 6- Faça um algoritmo que receba individualmente 2 números inteiros positivos e informe a diferença entre eles. O
+algoritmo deve garantir que o segundo número seja obrigatoriamente menor do que o primeiro. O usuário terá duas
+chances de inserir os valores corretos.  -->
+
+<meta charset="utf-8" />
+
+<script>
+  var val1, val2, dife;
+
+  val1 = parseInt(prompt("informe o primeiro numero"));
+  val2 = parseInt(prompt("Informe o segundo numero, que seja menor que o primeiro"));
+
+  if (val1 <= val2) {
+    alert("iNFORME O SEGUNDO NUMERO NOVAMENTE");
+    val2 = parseInt(prompt("Informe o segundo numero, que seja menor que o primeiro"));
+
+    if (val1 > val2) {
+      dife = val1 - val2;
+      document.write("a diferença entre eles é: ", dife);
+    } else {
+      document.write("Você falhou!");
+    }
+  } else {
+    dife = val1 - val2;
+    document.write("a diferença entre eles é: ", dife);
+  }
+</script>

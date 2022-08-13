@@ -1,0 +1,106 @@
+1-
+A)
+
+SELECT CONCAT(e.first_name, ' ', e.last_name) AS Colaboradores_e_Clientes, 'EMP' as PERSON_TP
+FROM employees e
+UNION
+SELECT CONCAT(c.cust_first_name, ' ', c.cust_last_name), 'CUS' as PERSON_TP
+FROM customers c;
+
+B)
+
+SELECT CONCAT(e.first_name, ' ', e.last_name) AS name
+FROM employees e
+WHERE e.employee_id IN (SELECT DISTINCT e1.manager_id
+					FROM employees e1)					   
+INTERSECT
+SELECT CONCAT(c.cust_first_name, ' ', c.cust_last_name) AS name
+FROM customers c;
+
+C)
+
+SELECT
+	CONCAT(E.FIRST_NAME, ' ', E.LAST_NAME) AS NAME
+FROM EMPLOYEES E
+WHERE E.EMPLOYEE_ID IN (SELECT E.MANAGER_ID FROM EMPLOYEES E)
+	EXCEPT
+(
+	SELECT
+		CONCAT(E.FIRST_NAME, ' ', E.LAST_NAME) AS NAME
+	FROM EMPLOYEES E
+	WHERE E.EMPLOYEE_ID IN (SELECT E.MANAGER_ID FROM EMPLOYEES E)
+		EXCEPT
+	SELECT
+		CONCAT(C.CUST_FIRST_NAME, ' ', C.CUST_LAST_NAME) AS NAME
+	FROM CUSTOMERS C
+);
+
+D)
+
+SELECT CONCAT(e.first_name, ' ', e.last_name) AS name
+FROM employees e				   
+INTERSECT
+SELECT CONCAT(c.cust_first_name, ' ', c.cust_last_name) AS name
+FROM customers c;
+
+E)
+
+SELECT CONCAT(c.cust_first_name, ' ', c.cust_last_name) AS name
+FROM customers c
+WHERE c.customer_id IN (SELECT o.customer_id FROM orders o
+					   WHERE o.order_id = (SELECT oi.order_id FROM order_items oi
+										  WHERE oi.product_id = (SELECT pi.product_id FROM product_information pi
+																WHERE product_name = 'Laptop 128/12/56/v90/110')));
+
+F)
+SELECT SUM(quantity) AS quantidade, SUM((quantity*unit_price)) AS valor FROM order_items oi
+INNER JOIN product_information pi ON oi.product_id = pi.product_id
+WHERE LOWER(pi.product_name) SIMILAR TO '%mouse%';
+
+2-
+
+(SELECT o.sales_rep_id, 
+        e.first_name, 
+        e.last_name,
+        SUM(o.order_total) AS total_vendas,
+        e.salary,
+        ((e.salary * 0.05) + e.salary) AS new_salary,
+        '5%' AS adjust
+FROM employees e
+INNER JOIN orders o ON o.sales_rep_id = e.employee_id
+GROUP BY 1,2,3,5,6,7
+ORDER BY 4
+LIMIT 10)
+
+UNION
+
+(SELECT o.sales_rep_id, 
+        e.first_name, 
+        e.last_name,
+        SUM(o.order_total) AS total_vendas,
+        e.salary,
+        ((e.salary * 0.03) + e.salary) AS new_salary,
+        '3%' AS adjust
+FROM employees e
+INNER JOIN orders o ON o.sales_rep_id = e.employee_id
+GROUP BY 1,2,3,5,6,7
+ORDER BY 4
+LIMIT 5
+OFFSET 11)
+
+UNION
+
+(SELECT o.sales_rep_id, 
+        e.first_name, 
+        e.last_name,
+        SUM(o.order_total) AS total_vendas,
+        e.salary,
+        ((e.salary * 0.02) + e.salary) AS new_salary,
+        '2%' AS adjust
+FROM employees e
+INNER JOIN orders o ON o.sales_rep_id = e.employee_id
+GROUP BY 1,2,3,5,6,7
+ HAVING SUM(o.order_total) >= 50000.00
+ORDER BY 4
+OFFSET 16)
+ORDER BY 4;

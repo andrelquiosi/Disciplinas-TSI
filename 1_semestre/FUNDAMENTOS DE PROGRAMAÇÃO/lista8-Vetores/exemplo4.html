@@ -1,0 +1,16 @@
+<meta charset="utf-8">
+<script src='funcoes.js'></script>
+<script>
+    var matriz=[], linhas=2, colunas=2, maiorNum;
+    
+    matriz = preencherMatriz(linhas, colunas);
+    maiorNum = acharMaior(matriz, linhas, colunas);
+    
+    
+    
+    document.write('<hr> Matriz Base <hr>');
+    exibirMatriz(matriz,linhas, colunas);
+    
+    document.write('<hr> Maior número: ',maiorNum,'<hr>');
+    
+</script>

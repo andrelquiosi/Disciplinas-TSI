@@ -1,0 +1,18 @@
+<meta charset="utf=8">
+<script src="functions.js"></script>
+<script>
+   var matriz=[], linhas=3, colunas=3;
+    
+    //Criar e preencher a matriz
+    matriz = preencherMatriz(linhas, colunas);
+    
+    //Exibir o conteúda da matriz
+    document.write('<hr> Exibição 1 da matriz <hr>');
+    exibirMatriz(matriz, linhas, colunas);
+    
+    document.write('<hr> Exibição 2 da matriz <hr>');
+    document.write('Conteúdo da matriz: ',matriz);
+    
+    document.write('<hr> Exibição 3 da matriz <hr>');
+    exibirMatriz2(matriz, linhas, colunas)  
+</script>

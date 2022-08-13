@@ -1,0 +1,18 @@
+<meta charset="utf-8">
+<script src="funcoes.js"></script>
+
+<script>
+
+var num, soma=0, resp = "s" ;
+
+document.write("<hr> A relação de numeros informados é: <br>");
+
+while(resp == "s"){
+    num = Number(prompt("Informe o numero: "));
+    somarNums();
+    document.write(num, "<br>");
+    resp = prompt("Deseja contiruar: (s/n)");
+}
+document.write("<hr> A Soma é: ", soma.toFixed(2));
+
+</script>

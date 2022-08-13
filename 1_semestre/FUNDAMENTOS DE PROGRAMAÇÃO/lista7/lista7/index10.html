@@ -1,0 +1,23 @@
+<meta charset="utf-8">
+<script src="funcoes.js"></script>
+<script>
+    /*10. Usando While. Faça um programa que receba 10 números inteiros informados pelo usuário e retorne:
+a. A soma dos números digitados
+b. A média dos números digitados
+c. O maior número digitado
+d. O menor número digitado */
+var num=0, soma=0, menornum, maiornum=0,media, cont=1;
+
+while (cont<=10) {
+    num=Number(prompt('Informe um número inteiro: '));
+    somar();
+    mediaNum();
+    maiorNum();
+    menorNum();
+    cont++;
+}
+document.write('a- A soma dos nímeros é: ',soma,'<hr>');
+document.write('b- A média dos números digitados digitado é: ',media,'<hr>');
+document.write('c- O maior número digitado é: ',maiornum,'<hr>');
+document.write('d- O menor número digitado é: ',menornum,'<hr>');
+</script>

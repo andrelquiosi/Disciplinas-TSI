@@ -1,0 +1,168 @@
+--1)--------------------------------------------
+
+--Criptografando
+
+CREATE OR REPLACE FUNCTION FUNC_CK(p_text VARCHAR) RETURNS VARCHAR AS $$
+DECLARE
+    k INT := 3;
+    chr CHAR(1);
+    chr_ascii INTEGER;
+    chr_cript VARCHAR;
+BEGIN
+   FOR ix IN 1..length(p_text) 
+   LOOP
+   chr := SUBSTRING(p_text,ix,1);
+   chr_ascii := ((ASCII(chr) - 97 + k) % 26) + 97;
+   chr_cript := concat(chr_cript, CHR(chr_ascii));
+      	  
+   END LOOP;
+   RETURN chr_cript;
+end;
+$$ LANGUAGE plpgsql;
+
+--Descriptografando
+
+CREATE OR REPLACE FUNCTION FUNC_DK(p_text VARCHAR) RETURNS VARCHAR AS $$
+DECLARE
+    k INT := 3;
+    chr CHAR(1);
+    chr_ascii INTEGER;
+    chr_descript VARCHAR;
+BEGIN
+   FOR ix IN 1..length(p_text) loop
+   chr := SUBSTRING(p_text,ix,1);
+   chr_ascii := ((ASCII(chr) - 97 - k + 26) % 26) + 97;
+   chr_descript := concat(chr_descript, CHR(chr_ascii));
+      	  
+   end loop;
+   RETURN chr_descript;
+END;
+$$ LANGUAGE plpgsql;
+
+--2)---------------------------------------------------
+
+UPDATE users
+SET user_passwd = func_ck(user_name);
+
+--3)--------------------------------------------------
+
+
+CREATE OR REPLACE FUNCTION func_atualiza_salarios() RETURNS VOID AS $$
+
+DECLARE
+empId employees.employee_id%TYPE;
+salario_atual employees.salary%TYPE;
+v_novo_salario employees.salary%TYPE;
+v_min_salary jobs.min_salary%TYPE;
+v_max_salary jobs.max_salary%TYPE;
+job jobs.job_id%TYPE;
+
+BEGIN
+	FOR 
+		empId IN SELECT e.employee_id FROM employees e
+	LOOP
+		v_novo_salario := salario_atual;
+		
+		SELECT salary, job_id
+    		INTO salario_atual, job
+    	FROM employees e WHERE e.employee_id = empId;
+			
+		SELECT j.min_salary, j.max_salary 
+			INTO v_min_salary, v_max_salary
+		FROM jobs j WHERE j.job_id = job;
+
+    	IF salario_atual < v_min_salary THEN
+			v_novo_salario := v_min_salary;
+            END IF;
+		IF salario_atual BETWEEN v_min_salary AND v_max_salary  THEN
+			v_novo_salario := salario_atual + (salario_atual * 0.1);
+            END IF;
+		IF v_novo_salario > v_max_salary THEN
+			v_novo_salario := v_max_salary;
+		END IF;
+		UPDATE employees SET salary = v_novo_salario WHERE employee_id = empId;
+	END LOOP;
+END;
+$$ LANGUAGE plpgsql;
+
+--SELECT func_atualiza_salarios();
+
+--4)--------------------------------------------------
+
+CREATE OR REPLACE FUNCTION func_cargos_ocupados(id_colaborador INT) RETURNS TEXT[] AS $$
+DECLARE
+    cargos_ocupados TEXT := (SELECT job_id FROM employees WHERE employee_id = id_colaborador);
+	cargosArray TEXT[];
+    v_cargos job_history.job_id%TYPE;
+    empcur CURSOR (p_cargos INT) FOR SELECT job_id 
+		                              FROM job_history 
+		                              WHERE employee_id = p_cargos;
+BEGIN
+    OPEN empcur(p_cargos := id_colaborador);
+    LOOP 
+        FETCH empcur INTO v_cargos;
+        EXIT WHEN NOT FOUND;
+        cargos_ocupados := cargos_ocupados || ',' || v_cargos;		
+    END LOOP;    
+    CLOSE empcur;
+   cargosArray := string_to_array(cargos_ocupados,',');
+    RETURN cargosArray;
+END $$ LANGUAGE plpgsql;
+
+select func_cargos_ocupados(101);
+
+--5)--------------------------------------------------
+
+CREATE TRIGGER trg_generate_job_history
+    AFTER UPDATE ON employees
+    FOR EACH ROW EXECUTE PROCEDURE f_generate_job_history();
+
+CREATE OR REPLACE FUNCTION f_generate_job_history() RETURNS TRIGGER AS $$
+DECLARE
+    -- variável de registro/tupla/linha
+    rec_job_history record := NULL;
+
+BEGIN
+    -- verifica se ocorreu mudança de departamento ou cargo
+    IF OLD.department_id != NEW.department_id OR
+        OLD.job_id != NEW.job_id THEN
+
+        SELECT *
+            INTO rec_job_history 
+        FROM job_history
+        WHERE employee_id = OLD.employee_id
+        ORDER BY end_date DESC
+        LIMIT 1;
+
+         IF rec_job_history IS NOT NULL THEN
+             -- a data inicial do registro do histórico receberá a data final do 
+             -- último lançamento do histórico desse colaborador e a data final 
+             -- receberá a data de modificação do registro
+             RAISE NOTICE 'job_history existis';
+             INSERT INTO job_history (employee_id, start_date, end_date, job_id, department_id)
+                 VALUES (OLD.employee_id, rec_job_history.end_date, date(now()), OLD.job_id, OLD.department_id);
+         ELSE
+             -- a data inicial do registro do histórico receberá a data de contratação 
+             -- do colaborador e a data final receberá a da data de modificação do registro
+             RAISE NOTICE 'job_history NOT existis';
+             INSERT INTO job_history (employee_id, start_date, end_date, job_id, department_id)
+                 VALUES (OLD.employee_id, OLD.hire_date, date(now()), OLD.job_id, OLD.department_id);
+         END IF;
+
+     END IF;
+
+    -- atualiza o registro em employees
+    RETURN NEW;
+END $$ LANGUAGE plpgsql;
+
+SELECT *
+            -- v_hire_date precisa ser declarada
+            INTO v_hire_date
+FROM job_history
+WHERE employee_id = OLD.employee_id
+ORDER BY end_date DESC
+LIMIT 1; 
+
+--SELECT employee_id,job_id FROM job_history
+
+--UPDATE employees SET job_id = 'AD_PRES' WHERE employee_id = 103;

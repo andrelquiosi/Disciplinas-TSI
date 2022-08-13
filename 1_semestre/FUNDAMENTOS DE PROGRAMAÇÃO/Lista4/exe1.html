@@ -1,0 +1,33 @@
+<!-- 1- Faça um programa que receba 2 números quais quer e a operação desejada (+, -, *. /) e informe o resultado.
+Caso qualquer outro caracter seja informado na operação, o programa deverá retornar a frase “operação
+não reconhecida”. -->
+
+<meta charset="utf-8" />
+<script>
+  var valor1, valor2, operacao, result;
+
+  valor1 = Number(prompt("Informe o primeiro número"));
+  operacao = prompt("Informe a operação (+ - * /)");
+  valor2 = Number(prompt("Informe o segundo número"));
+
+  switch (operacao) {
+    case "+":
+      result = valor1 + valor2;
+      document.write("O resultado é = ", result);
+      break;
+    case "-":
+      result = valor1 - valor2;
+      document.write("O resultado é = ", result);
+      break;
+    case "*":
+      result = valor1 * valor2;
+      document.write("O resultado é = ", result);
+      break;
+    case "/":
+      result = valor1 / valor2;
+      document.write("O resultado é = ", result);
+      break;
+    default:
+      document.write("operação não reconhecida");
+  }
+</script>

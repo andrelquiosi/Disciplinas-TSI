@@ -1,0 +1,19 @@
+<meta charset="utf-8" />
+<script>
+  // 2- Faça um algoritmo que receba como entrada o consumo de energia elétrica em Kwatts e informe o valor da fatura.
+  // Considere que:
+  // a. Cada kwatt custa R$0,41
+  // b. Será cobrada uma taxa de iluminação pública que corresponde a 3% do valor consumido a qual deverá ser
+  // informada.
+  // c. Será cobrada uma taxa de manutenção no valor de R$1,70.
+  
+  var consumo, valFatura, val1;
+
+  consumo = Number(prompt("Informe seu consumo em Kwatts: "));
+
+  val1 = consumo * 0.41 * 0.03;
+  valFatura = consumo * 0.41 + val1 + 1.7;
+
+  document.write("O valor da Fatura é: ", valFatura.toFixed(2), "<br>");
+  document.write("O valor da Taxa é: ", val1.toFixed(2));
+</script>

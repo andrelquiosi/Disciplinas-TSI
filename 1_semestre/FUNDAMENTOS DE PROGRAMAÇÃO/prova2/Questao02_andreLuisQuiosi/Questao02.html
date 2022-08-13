@@ -1,0 +1,45 @@
+<meta charset="utf-8">
+<script src="funcoes.js"></script>
+<script>
+    // Utilizando a estrutura While. Faça um programa que receba 10 números, 
+    // calcule e mostre o seguinte relatório.
+
+    // a     O número informado e se ele é par ou ímpar.
+    // b      A soma dos números pares
+    // c      A soma de todos os números ímpares
+    // d       O maior número par
+    // e     O menor número ímpar
+    // f     A quantidade de números pares
+    // g      A quantidade de números ímpares.
+    var cont = 1, 
+    num, 
+    parImpar = 0, 
+    somPar = 0, 
+    somImp = 0, 
+    totPar = 0, 
+    totImpar = 0,
+    maiorNumPar = 0,
+    menorNumImpar,
+    numPar,
+    numImpar;
+
+    while (cont <= 10) {
+
+        num = Number(prompt("Informe o " + cont + "º numero"));
+
+        mostraParImpar();
+        maiorMenorImparPar();
+        somPares();
+        somImpares();
+        totalPar();
+        totalImpar();
+        cont++;
+    }
+
+        document.write("<hr>A soma de todos os Pares é: ", somPar,"<hr>");
+        document.write("A soma de todos os Impares é: ", somImp,"<hr><br>")
+        document.write("O maior munero Par é: ", maiorNumPar,"<hr>");
+        document.write("O menor Numero Impar é: ", menorNumImpar,"<hr>");
+        document.write("Aquantidade de numeros Pares é: ", totPar,"<hr>");
+        document.write("A soma de todos os Impares é: ", totImpar,"<hr><br>");
+</script>

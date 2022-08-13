@@ -1,0 +1,34 @@
+<meta charset="utf-8">
+<script src="funcoes.js"></script>
+<script>
+    // 01. Faça um programa para controlar o estoque e calcular o total de vendas diárias de uma
+    // determinada empresa.
+    // a. O usuário deve lançar o estoque de cada um dos 5 produtos;
+    // b. O usuário deve lançar o valor unitário de cada produto;
+    // c. O usuário deve lançar a quantidade vendida de cada produto no dia;
+    // d. O programa deve exibir um relatório apresentando o faturamento diário geral
+    // e o estoque atual de cada produto.
+
+    var estoque = [],
+        valProdutos = [],
+        nomeProd = [],
+        venda=[],
+        quantidadeProdutos = 5;
+
+
+    alert("Controle de estoque!!\nA seguir informe os nome do produtos em estoque!!");
+    nomeProd = nomeProduto(quantidadeProdutos);
+
+    alert("Controle de estoque!!\nA seguir informe a quantidade de cada um dos 5 produtos em estoque!!");
+    estoque = estoqueProduto(quantidadeProdutos,nomeProd);
+
+    alert("Controle de estoque!!\nA seguir informe o valor de cada um dos 5 produtos em estoque!!");
+    valProdutos = valorDosProdutos(quantidadeProdutos, estoque, nomeProd);
+
+    alert("Controle de estoque!!\nA seguir informe a quantidade de cada produto vendido no dia!!");
+    venda = vendaDia(quantidadeProdutos, nomeProd, estoque);
+
+    relatorio(quantidadeProdutos, nomeProd, estoque, venda, valProdutos);
+
+
+</script>

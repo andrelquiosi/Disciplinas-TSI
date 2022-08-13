@@ -1,0 +1,76 @@
+      /* Style for our header texts
+    * --------------------------------------- */
+     .section h2 {
+        font-size: 8em;
+        font-family: arial, helvetica;
+        color: rgba(255, 255, 255, 0.712);
+        margin: 0;
+        padding: 0;
+      }
+
+      .section h1 {
+        top: 50%;
+        transform: translateY(-50%);
+        position: relative;
+        font-size: 8em;
+        font-family: arial, helvetica;
+        color: rgb(2, 68, 0);
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Centered texts in each section
+    * --------------------------------------- */
+      .section {
+        text-align: center;
+      }
+
+
+      /* Backgrounds will cover all the section
+    * --------------------------------------- */
+      #section0,
+      #section1,
+      #slide1,
+      #slide2,
+      #tabela {
+        background-size: cover;
+        background-attachment: fixed;
+      }
+
+      /* Defining each sectino background and styles
+    * --------------------------------------- */
+      #section0 {
+        background-image: url(../img/background1.jpg);
+      }
+
+
+      /*Adding background for the slides
+    * --------------------------------------- */
+      #slide1 {
+        background-image: url(../img/background2.jpg);
+        padding: 6% 0 0 0;
+      }
+
+      #slide2 {
+        background-image: url(../img/background3.jpg);
+        padding: 6% 0 0 0;
+      }
+
+      #section1 {
+        background-image: url(../img/background4.jpg);
+      }
+      #tabela {
+        background-image: url(../img/muda_de_erva_mate_para_chimarrao_ilex_paraguariensis_334_3_20190611093854.webp);
+      }
+
+      .tableauPlaceholder{
+        margin: 0 0 0 20%;
+      }
+
+      #fullpage p{
+        font-size: 1.5em;
+      }
+      p{
+        text-align: left;
+      }
+      /* --------------------------------------------------------------       */

@@ -1,0 +1,30 @@
+<meta charset="utf-8">
+<script src="funcoes.js"></script>
+<script>
+    /*13. Usando While. Uma escola tem 5 turmas e cada turma tem N alunos. Crie um programa que informe, por turma,
+o total de alunos com média superior a 7 e a média geral da escola. */
+var turma=1, aluno=1, numAlunos, mediaMaior7=0, somaMedias=0, qtdMedias=0, mediaGeral=0;
+
+numAlunos= Number(prompt('Informe a qtde de alunos por turma: '));
+    
+    document.write('<hr> Relatório escolar<hr>');
+    document.write('Dados das turmas<br>')
+    while ( turma<=3 ){
+        alert('turma'+turma)
+        while( aluno<=numAlunos ){
+            media=Number(prompt('Informe a média do '+aluno+'o. aluno'));
+           contarMedias();
+           somarMedias();
+           contarMediasGeral();
+           aluno++;
+        }
+        aluno=1;
+    document.write('Turma: ',turma,'Total de média maiores do que 7: ',mediaMaior7,'<hr>');
+       
+     zerarContMedias();
+     turma++;
+        }
+        calcularMediaGeral();
+        document.write('<br>Dados da Escola<br>');
+        document.write('A media geral da escola é: ',mediaGeral.toFixed(2));
+</script>

@@ -1,0 +1,24 @@
+<meta charset="utf-8" />
+
+<script>
+  // 3- Faça um algoritmo que receba o salário bruto de um funcionário e calcule o valor do INSS: 5%, do IR: 7% e do Auxílio
+  // Alimentação: 8% e informe os valores de cada um destes impostos/benefícios bem como o salário líquido.
+
+  var inss, ir, auxAlimentacao, salLiq, salBrut;
+
+  salBrut = Number(prompt("Informe seu salário bruto(Sem descontos):"));
+
+  inss = salBrut * (5 / 100);
+  ir = salBrut * (7 / 100);
+  auxAlimentacao = salBrut * (8 / 100);
+  salLiq = salBrut - inss - ir;
+
+  document.write("Desconto INSS: ", inss.toFixed(2), "<br>");
+  document.write("Desconto do IR: ", ir.toFixed(2), "<br>");
+  document.write(
+    "O valor do seu Auxilio Alimentação é: ",
+    auxAlimentacao.toFixed(2),
+    "<br>"
+  );
+  document.write("O valor do seu salário liquido é: ", salLiq.toFixed(2));
+</script>

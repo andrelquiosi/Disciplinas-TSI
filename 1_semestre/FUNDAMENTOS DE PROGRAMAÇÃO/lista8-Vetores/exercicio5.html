@@ -1,0 +1,26 @@
+<meta charset="utf-8">
+<script src='funcoes3.js'></script>
+<script>
+    var vetor=[], tam=10, maiorNum, menorNum, somaVetor, mediaVetor, qtPar, qtImpar;
+    
+    vetor=preencherVetor(tam);
+    
+    maiorNum = acharMaior(vetor, tam);
+    menorNum = acharMenor(vetor, tam);
+    somaVetor = somarVetor(vetor, tam);
+    mediaVetor = calcularMedia(somaVetor, tam);
+    qtPar = contarPares(vetor, tam);
+    qtImpar = contarImpares(vetor, tam);
+    
+    
+    document.write('<hr>Exibindo valores informados <hr>');
+    exibirVetor(vetor, tam);
+    
+    document.write('<hr> a) Maior valor: ',maiorNum,'<hr>');
+    document.write('<hr> b) Menor valor: ',menorNum,'<hr>');
+    document.write('<hr> c) Soma: ',somaVetor,'<hr>');
+    document.write('<hr> d) Media: ',mediaVetor,'<hr>');
+    document.write('<hr> e) Qtd de Pares: ',qtPar,'<hr>');
+    document.write('<hr> f) Qtd de Ímpares: ',qtImpar,'<hr>');
+
+</script>

@@ -1,0 +1,17 @@
+<meta charset="utf-8">
+<script src="funcoes.js"></script>
+<script>
+    var salBase, perc, salReaj;
+
+    salBase = Number(prompt("Informe o valor do salário base: "));
+    perc = Number(prompt("Informe o percentual de reajuste %: "));
+
+reajuste = calcularReajuste(salBase, perc);
+
+salReaj = salBase + reajuste;
+
+document.write("<hr> Relatório de pagamento <hr>");
+document.write("Salário base: ", salBase.toFixed(2),"<br>");
+document.write("Reajuste: ", reajuste.toFixed(2),"<br>");
+document.write("Salário reajustado: ", salReaj.toFixed(2));
+</script>

@@ -1,0 +1,20 @@
+<meta charset="utf-8">
+<script src="funcoes.js"></script>
+<script>
+    /*11. Usando While. Faça um programa que receba 10 números inteirosinformados pelo usuário e retorne:
+a. Informe se o número é par ou impar
+b. Informe quantos números pares foram digitados
+c. Informe quantos números ímpares foram digitados. */
+var num=0, numPar=0, numImpar=0, cont=1;
+
+ while (cont<=10) {
+    num=Number(prompt('Informe um número inteiro: '));
+    numeroParImpar();
+    par();
+    impar();
+    cont++;
+ }
+
+ document.write('b- A qauntidade de números pares é: ',numPar,'<hr>');
+ document.write('c- A quantd de números impares é: ',numImpar,'<hr>');
+</script>

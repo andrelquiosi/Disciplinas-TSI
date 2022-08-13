@@ -1,0 +1,17 @@
+<meta charset="utf-8" />
+
+<script>
+  /*9- Faça um algoritmo que receba dois números inteiros, armazenados cada um em uma variável posteriormente troque o
+conteúdo das variáveis. Isto é, no final do algoritmo, a variável A deverá estar com o valor da variável B e a variável B
+deverá estar com o valor da variável A. */
+  var A, B, aux;
+
+  A = parseInt(prompt("Valor A"));
+  B = parseInt(prompt("Valor B"));
+
+  aux = A;
+  A = B;
+  B = aux;
+
+  document.write("valor A =", A, " Valor B =", B);
+</script>

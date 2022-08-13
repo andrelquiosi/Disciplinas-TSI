@@ -1,0 +1,21 @@
+<meta charset="utf-8">
+<script src="funcoes.js"></script>
+<script>
+    /*12. Usando While. Faça um programa que receba o nome e o salário de 10 funcionários de uma empresa e retorne o
+nome e o salário do funcionário que receber o salário mais alto. */
+
+var cont=1, sal, func, maiorsal, nomeMaior;
+
+ while(cont<=10 ){
+     func=prompt('Informe o nome do funcionário: ')
+ 
+     sal=parseFloat(prompt('Informe um valor para o salário do funcionário: '));
+     
+     maiorSalario();
+     cont++;
+    }
+     document.write('O funcionário com o maior salário é: ',nomeMaior,'<br>');
+    document.write('O maior salário é de: ',maiorsal);
+
+
+</script>

@@ -1,0 +1,26 @@
+<!-- 6. Faça um programa que preencha uma matriz de 10x3 com as notas de dez alunos em 3 provas. O programa deverá mostrar
+    um relatório com o número dos alunos (número da linha) e a prova em que cada aluno obteve a menor nota. Ao final, o
+    relatório deverá mostrar quantos alunos tiveram a menor nota em cada uma das provas (prova1, prova2 e na prova3). -->
+<meta charset="UTF-8">
+<script src="functions.js"></script>
+<script>
+    var notas = [],
+        linhas = 4,
+        colunas = 3,
+        rel1 = [],
+        rel2 = [];
+
+    notas = preencheNotas(linhas, colunas);
+
+    exibeMatriz(notas, linhas, colunas);
+
+    rel1 = buscaProvaComMenorNota(notas, linhas, colunas);
+
+    document.write('<br><br> Relatório 1 <br>')
+    exibeVetor(rel1);
+
+    rel2 = contarProvas(rel1, colunas);
+
+    document.write('<br> Relatório 2 <br>')
+    exibeVetor2(rel2, colunas);
+</script>

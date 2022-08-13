@@ -1,0 +1,38 @@
+<meta charset="utf-8">
+<script src="funcoes.js"></script>
+<script>
+    var vet1 = [],
+        vet2 = [],
+        soma = [],
+        tam, somaVet1 = 0,
+        somaVet2;
+
+        tam = parseInt(prompt("Informe o tamanho dos vetores"));
+
+        alert("Preencha o 1º vetor!");
+        vet1 = preencherVetor(tam);
+        alert("Preencha o 2º vetor!");
+        vet2 = preencherVetor(tam);
+
+        soma = somarVetores(tam,vet1,vet2);
+        somaVet1 = somaVetor(tam,vet1);
+        somaVet2 = somaVetor(tam,vet2);
+
+        document.write("<hr> Exibindo vetores <hr>");
+        
+        document.write("Vetor 1 <br>");
+        exibirVetor(tam, vet1);
+
+        document.write("Vetor 2 <br><br>");
+        exibirVetor(tam, vet2);
+
+        document.write("Soma <br><br>");
+        exibirVetor(tam, soma);
+
+        document.write("Soma vet 1: ",somaVet1,"<br><br>");
+        document.write("Soma vet 2: ",somaVet2,"<br><br>");
+
+        
+
+
+</script>

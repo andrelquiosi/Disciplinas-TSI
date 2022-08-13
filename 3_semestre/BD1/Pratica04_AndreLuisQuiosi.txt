@@ -1,0 +1,25 @@
+1 - 
+a)
+
+SELECT * FROM categories;
+SELECT product_id, product_name, product_description FROM product_information WHERE category_id = 33;
+
+
+b)
+
+SELECT product_id, product_name FROM product_information WHERE catalog_url LIKE '';
+
+c)
+
+SELECT CONCAT(cust_first_name,' ',cust_last_name) AS "Nome Completo" FROM customers 
+WHERE LOWER(marital_status) LIKE 'single' AND LOWER(gender) LIKE 'f';
+
+d)
+
+NÂO;
+SELECT marital_status, nls_territory FROM customers WHERE LOWER(marital_status) LIKE 'italy';
+
+e)
+
+SIM;
+SELECT warehouse_name FROM warehouses WHERE LOWER(warehouse_name) LIKE 'new jersey';

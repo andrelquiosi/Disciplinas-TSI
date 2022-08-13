@@ -1,0 +1,27 @@
+<meta charset="utf-8">
+<script>
+    var vet1=[], vet2=[], soma=[], i;
+
+    //preenchendo o vetor
+    alert("Informe os valores do vetor 1");
+    for(i=0; i<5; i++){
+       vet1[i]= Number(prompt("Informe o "+(i+1)+"º número: "));
+
+    }
+    alert("Informe os valores do vetor 2");
+
+    for(i=0; i<5; i++){
+       vet2[i]= Number(prompt("Informe o "+(i+1)+"º número: "));
+
+    }
+    //exibindo o vetor
+    for(i=0; i<5; i++){
+       soma[i]= vet1[i] + vet2[i];
+
+    }
+    document.write("Conteúdo do vetor 1: ", vet1,"<br>");
+    document.write("Conteúdo do vetor 2: ", vet2,"<br>");
+    document.write("Conteúdo da soma dos vetores: ", soma,"<br>");
+
+
+</script>

@@ -1,0 +1,120 @@
+1 - A) --------------------------------------
+SELECT
+    e.employee_id,
+    CONCAT(e.first_name, ' ', e.last_name) AS "employee_name",
+    e.job_id,
+    j.job_title,
+    ROUND(e.salary / 160, 2) AS salary_hour
+FROM
+    employees e
+    INNER JOIN jobs j ON j.job_id = e.job_id
+WHERE
+    j.job_title = 'Programmer';
+
+B) -----------------------------------
+SELECT
+    e.first_name,
+    jb.job_title,
+    jh.job_title
+FROM
+    job_history h
+    RIGHT JOIN employees e ON e.employee_id = h.employee_id
+    INNER JOIN jobs jb ON jb.job_id = e.job_id
+    INNER JOIN jobs jh ON jh.job_id = h.job_id
+ORDER BY
+    e.first_name;
+
+C) -------------------------------------
+SELECT
+    d.department_name,
+    c.country_name
+FROM
+    departments d
+    INNER JOIN locations l ON d.location_id = l.location_id
+    INNER JOIN countries c ON c.country_id = l.country_id
+WHERE
+    d.manager_id IS NULL;
+
+2 -------------------------------------
+SELECT
+    CONCAT(e.first_name, ' ', e.last_name) AS "employee_name",
+    e.salary,
+    j.min_salary,
+    j.max_salary
+FROM
+    employees e
+    INNER JOIN jobs j ON j.job_id = e.job_id
+WHERE
+    e.salary < j.min_salary
+    OR e.salary > j.max_salary;
+
+3 -------------------------------------
+SELECT
+    CONCAT(e.first_name, ' ', e.last_name) AS "employee_name",
+    j.job_title,
+    e.salary,
+    CASE
+        WHEN e.salary < 1045.00 THEN 7.5
+        WHEN e.salary > 1045.00
+        AND e.salary < 2089.60 THEN 9
+        WHEN e.salary > 2089.60
+        AND e.salary < 3134.40 THEN 12
+        WHEN e.salary > 3134.40 THEN 14
+    END AS "(%)INSS",
+    CASE
+        WHEN e.salary < 1045.00 THEN ROUND(e.salary *(0.075), 2)
+        WHEN e.salary > 1045.00
+        AND e.salary < 2089.60 THEN ROUND(e.salary *(0.09), 2)
+        WHEN e.salary > 2089.60
+        AND e.salary < 3134.40 THEN ROUND(e.salary *(0.12), 2)
+        WHEN e.salary > 3134.40 THEN ROUND(e.salary *(0.14), 2)
+    END AS "INSS",
+    CASE
+        WHEN e.salary < 1903.98 THEN 0
+        WHEN e.salary > 1903.99
+        AND e.salary < 2826.65 THEN 7.5
+        WHEN e.salary > 2826.65
+        AND e.salary < 3751.05 THEN 15
+        WHEN e.salary > 3751.05
+        AND e.salary < 4664.68 THEN 22.5
+        WHEN e.salary > 4664.68 THEN 27.5
+    END AS "(%)IRRF",
+    CASE
+        WHEN e.salary < 1903.98 THEN e.salary - e.salary
+        WHEN e.salary > 1903.99
+        AND e.salary < 2826.65 THEN ROUND(e.salary *(0.075), 2)
+        WHEN e.salary > 2826.65
+        AND e.salary < 3751.05 THEN ROUND(e.salary *(0.15), 2)
+        WHEN e.salary > 3751.06
+        AND e.salary < 4664.68 THEN ROUND(e.salary *(0.225), 2)
+        WHEN e.salary > 4664.68 THEN ROUND(e.salary *(0.275), 2)
+    END AS "IRRF"
+FROM
+    employees e
+    INNER JOIN jobs j ON j.job_id = e.job_id;
+
+4 ---------------------------------------
+5 ---------------------------------------
+SELECT
+    e.first_name,
+    d.manager_id
+FROM
+    employees e
+    INNER JOIN departments d ON e.department_id = d.department_id;
+
+6 - A) -------------------------------------
+SELECT
+    CONCAT(c.cust_first_name, ' ', c.cust_last_name) AS "Nome completo",
+    e.first_name
+FROM
+    customers c
+    INNER JOIN employees e ON c.account_mgr_id = e.employee_id;
+
+B) -------------------------------------
+SELECT
+    w.warehouse_name,
+    c.country_name
+FROM
+    warehouses w
+    INNER JOIN locations l ON l.location_id = w.location_id
+    INNER JOIN countries c ON l.country_id = c.country_id;

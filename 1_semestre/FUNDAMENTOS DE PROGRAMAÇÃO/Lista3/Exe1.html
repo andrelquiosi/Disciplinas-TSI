@@ -1,0 +1,23 @@
+<!-- 1- Uma empresa de vendas oferece para seus clientes um desconto que leva em
+consideração o valor da compra do cliente. Compras maiores ou iguais a R$
+5.000,00 recebem descontos de 20% e compras menores que R$ 5.000,00 recebem
+descontos de 15%. Faça um algoritmo que receba o valor compra e informe o valor
+do desconto obtido e o valor da compra com desconto. -->
+
+<meta charset="utf-8" />
+
+<script>
+  var compra, valDesc, valTotal;
+
+  compra = Number(prompt("informe o calor da compra: "));
+
+  if (compra >= 5000) {
+    valDesc = compra * 0.2;
+    valTotal = compra - valDesc;
+  } else {
+    valDesc = compra * 0.15;
+    valTotal = compra - valDesc;
+  }
+  document.write("o valor do desconto é de: ", valDesc.toFixed(2), "<br>");
+  document.write("O valor total com o desconto é: ", valTotal.toFixed(2));
+</script>

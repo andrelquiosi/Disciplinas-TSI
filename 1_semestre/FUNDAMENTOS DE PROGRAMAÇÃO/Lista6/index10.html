@@ -1,0 +1,23 @@
+<meta charset="utf-8">
+<script src="js.js"></script>
+<script>
+    /*10. Usando de variáveis Globais.Faça um programa que receba 10 números inteiros informados pelo usuário e
+retorne:
+a. A soma dos números digitados
+b. A média dos números digitados
+c. O maior número digitado
+d. O menor número digitado*/
+var num, i, soma=0, menornum, maiornum=0,media;
+for(i=1; i<=10; i++){
+    num=parseInt(prompt('Informe os valores: '));
+    somarNums();
+    mediaNums();
+    maiorNums();
+    menorNums();
+}
+
+document.write('a- A soma dos números é: ',soma,'<br>');
+document.write('b- A média dos números digitados: ',media,'<br>');
+document.write('c- O maior número é: ',maiornum,'<br>');
+document.write('d- O menor número é: ',menornum);
+</script>

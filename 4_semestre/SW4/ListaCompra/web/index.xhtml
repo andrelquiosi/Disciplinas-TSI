@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Lista de Compras</title>
+    </h:head>
+    <h:body>
+        <h2> Item a Comprar:</h2>
+        <h:form>
+            Descricao: <h:inputText value="#{listaBean.item.descricao}"/><br/>
+            Quantidade: <h:inputText value="#{listaBean.item.quantidade}"/><br/>
+            <h:commandButton value="Incluir" action="#{listaBean.confirmar}"/>
+        </h:form>
+        <h:dataTable value="#{listaBean.lista}" var="it">
+            <h:column>
+                <h:form>
+                    <h:commandLink value="#{it.descricao}" action="#{listaBean.editar(it)}"/>
+                </h:form>
+            </h:column>
+            <h:column>
+                <h:outputText value="#{it.quantidade}"/>
+            </h:column>
+            <h:column>
+                <h:form>
+                    <h:commandButton value="X" action="#{listaBean.remover(it)}"/>
+                </h:form>
+            </h:column>
+        </h:dataTable>
+    </h:body>
+
+</html>
+

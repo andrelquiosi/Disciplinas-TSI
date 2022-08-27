@@ -39,3 +39,31 @@ x_sd2
 #COEFICIENTE DE VARIAÇÃO
 x_cv <- sd(x)/mean(x)*100
 x_cv
+
+# QUATIS
+x <- c(3,4,6,8,11,14,16,17,20,21,23,24)
+x_qua <- quantile(x)
+x_qua
+
+#quati limite superior e limite inferior
+x_LI <- quantile(x)[2] - 1.5*(quantile(x)[4] - quantile(x)[2])
+x_LI <- as.numeric(x_LI)
+x_LI
+
+x_LS <- quantile(x)[4] + 1.5*(quantile(x)[4] - quantile(x)[2])
+x_LS <- as.numeric(x_LS)
+x_LS
+
+# boxplot quati
+par(mar = c(3,2,1,1))
+boxplot(x)
+
+#Coeficiente de asimetria
+library(moments)
+x_as <-skewness(x)
+x_as
+
+#Coeficiente de curtose
+x_k <- kurtosis(x)
+x_k
+

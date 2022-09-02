@@ -1,15 +1,30 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Lista de Compras</title>
     </h:head>
     <h:body>
+        <h:messages globalOnly="true"/>
         <h2> Item a Comprar:</h2>
-        <h:form>
-            Descricao: <h:inputText value="#{listaBean.item.descricao}"/><br/>
-            Quantidade: <h:inputText value="#{listaBean.item.quantidade}"/><br/>
+        <h:form id="frmLista">
+            Descricao: 
+            <h:inputText id="edDescr" value="#{listaBean.item.descricao}" 
+                         required="true"
+                         requiredMessage="Informe a descrição do produto!"
+                         />
+            <h:message for="edDescr" showSummary="true" showDetail="true"/>
+            <br/>
+            Quantidade: 
+            <h:inputText id="edQtde" value="#{listaBean.item.quantidade}"
+                         converterMessage="Informe um numero inteiro!"
+                         validatorMessage="Quantidade deve estar entre 1 e 100!">
+                <f:validateLongRange minimum="1" maximum="100"/>
+            </h:inputText>
+            <h:message for="edQtde"/>
+            <br/>
             <h:commandButton value="Incluir" action="#{listaBean.confirmar}"/>
         </h:form>
         <h:dataTable value="#{listaBean.lista}" var="it">
@@ -27,6 +42,21 @@
                 </h:form>
             </h:column>
         </h:dataTable>
+        
+        <h3>Definir entrega</h3>
+        <h:form id="frmEntraga">
+            
+            Data: <h:inputText value="#{listaBean.dataEntrega}"
+                               validator="validaDataFutura">
+                <f:convertDateTime pattern="dd/mm/yyy"/>
+            </h:inputText><br/>
+            
+            CEP: <h:inputText value="#{listaBean.cepEntrega}"
+                              validatorMessage="CEP Incorreto">
+                <f:validateRegex pattern="\d{2}\.\d{3}-\d{3}"/>
+            </h:inputText><br/>
+            <h:commandButton value="COnfirmar" action="#{listaBean.definirEntrega}"/>
+        </h:form>
     </h:body>
 
 </html>

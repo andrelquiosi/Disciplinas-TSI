@@ -10,8 +10,6 @@ def geraArquivoJson(dados):
         print()
 
 
-    # for i in dados['series']:
-    #     print(i)
 
     f=open('dadosibge.json', 'w')
     f.write(dados.decode('utf-8'))
@@ -19,7 +17,10 @@ def geraArquivoJson(dados):
 
 #bloco para extração de dados
 link='https://servicodados.ibge.gov.br/api/v1/paises/BR%7CRU%7CIN%7CCN%7CZA/indicadores/77850'
-dados = rq.get(url=link)
-geraArquivoJson(dados.content)
+dados = rq.get(url=link).json()
+# geraArquivoJson(dados.content)
 
-
+for i in dados:
+    for pais in i['series']:
+        dict(pais['serie'])
+    break   

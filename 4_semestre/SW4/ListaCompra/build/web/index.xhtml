@@ -10,6 +10,13 @@
         <h:messages globalOnly="true"/>
         <h2> Item a Comprar:</h2>
         <h:form id="frmLista">
+            Seção:
+            <h:selectOneMenu value="#{listaBean.item.setor}" 
+                             required="true" 
+                             requiredMessage="Selecione o setor"
+                             converter="#{conversorSetor}">
+                <f:selectItems value="#{setorBean.itensSetor}"/>           
+            </h:selectOneMenu><br/>
             Descricao: 
             <h:inputText id="edDescr" value="#{listaBean.item.descricao}" 
                          required="true"
@@ -27,30 +34,39 @@
             <br/>
             <h:commandButton value="Incluir" action="#{listaBean.confirmar}"/>
         </h:form>
+        
         <h:dataTable value="#{listaBean.lista}" var="it">
             <h:column>
                 <h:form>
+                    Produto: 
                     <h:commandLink value="#{it.descricao}" action="#{listaBean.editar(it)}"/>
                 </h:form>
             </h:column>
+
             <h:column>
+                Setor: 
+                <h:outputText value="#{it.setor.descricao}"/>
+            </h:column>
+            <h:column>
+                Quantidade: 
                 <h:outputText value="#{it.quantidade}"/>
             </h:column>
+
             <h:column>
                 <h:form>
                     <h:commandButton value="X" action="#{listaBean.remover(it)}"/>
                 </h:form>
             </h:column>
         </h:dataTable>
-        
+
         <h3>Definir entrega</h3>
         <h:form id="frmEntraga">
-            
+
             Data: <h:inputText value="#{listaBean.dataEntrega}"
                                validator="validaDataFutura">
                 <f:convertDateTime pattern="dd/mm/yyy"/>
             </h:inputText><br/>
-            
+
             CEP: <h:inputText value="#{listaBean.cepEntrega}"
                               validatorMessage="CEP Incorreto">
                 <f:validateRegex pattern="\d{2}\.\d{3}-\d{3}"/>

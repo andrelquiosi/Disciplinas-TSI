@@ -1,26 +1,20 @@
-from ast import For
 import requests as rq
-import os
-
-#método para gerar arquivo json
-def geraArquivoJson(dados):
-    try:
-        os.remove("dadosibge.json")
-    except:
-        print()
-
-
-
-    f=open('dadosibge.json', 'w')
-    f.write(dados.decode('utf-8'))
-    f.close()
 
 #bloco para extração de dados
 link='https://servicodados.ibge.gov.br/api/v1/paises/BR%7CRU%7CIN%7CCN%7CZA/indicadores/77850'
-dados = rq.get(url=link).json()
-# geraArquivoJson(dados.content)
+dados = rq.get(url=link).json()[0]
 
-for i in dados:
-    for pais in i['series']:
-        dict(pais['serie'])
-    break   
+taxas = []
+
+for dados_paises in dados['series']:
+        
+        for dados_anos in dados_paises['serie']:
+
+                ano, taxa = list(dados_anos.items())[0]
+                if(taxa != None):
+                        taxas.append({ 'pais': dados_paises['pais']['nome'], 'ano': ano, 'taxa': taxa })
+
+
+taxas.sort(key=lambda x: float(x.get('taxa')), reverse=True)
+
+print('"População - Taxa bruta de mortalidade:', *taxas[:10], sep='\n')

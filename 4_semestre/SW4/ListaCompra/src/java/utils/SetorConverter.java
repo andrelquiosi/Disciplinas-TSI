@@ -26,7 +26,7 @@ public class SetorConverter implements Converter {
         try {
             int id = Integer.parseInt(value);
             return setorBean.getSetor(id);
-        } catch (Exception ex) {
+        } catch (NumberFormatException ex) {
             return null;
         }
     }

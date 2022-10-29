@@ -1,4 +1,4 @@
-x <- c(105,221,181,186,121,181,180,143)
+x <- c(105, 221, 181, 186, 121, 181, 180, 143)
 x
 
 #SOMAR OS NUMEROS
@@ -10,7 +10,7 @@ x_len <- length(x)
 x_len
 
 #MEDIA
-x_med <- x_sum/x_len
+x_med <- x_sum / x_len
 x_med
 
 x_med <- mean(x)
@@ -75,7 +75,7 @@ d_ordenado[1:15]; d_ordenado[16:27]
 #######Frequencia absoluta
 
 fa1 <- length(d[d == 1])
-fa2 <- length(d[d ==2])
+fa2 <- length(d[d == 2])
 fa3 <- length(d[d == 5])
 fa4 <- length(d[d == 9])
 fa5 <- length(d[d == 13])
@@ -317,3 +317,4 @@ hist(d ,breaks = 30, main="histograma" ,xlab="",ylab="" )
 axis(side=1, at=seq(1,22,by=3))
 axis(side=2, at=seq(0,7,by=1))
 lines(freq,type="b")
+

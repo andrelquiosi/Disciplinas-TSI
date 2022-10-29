@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Cadastro Veiculos</title>
+    </h:head>
+    <h:body>
+        <h:form id="cadForm">
+            <p:panelGrid columns="2" id="pnlForm">
+                <p:outputLabel for="edPlaca" value="Placa:"/>
+                <h:panelGroup layout="block">
+                    <p:inputMask id="edPlaca" required="true"
+                                 requiredMessage="Informe a placa"
+                                 value="#{cadastroVeiculo.veiculo.placa}"
+                                 mask="aaa-9a99"/>
+                    <p:message for="edPlaca"/>
+                </h:panelGroup>
+
+                <p:outputLabel for="edMarca" value="Marca:"/>
+                <p:selectOneMenu value="#{cadastroVeiculo.marcaEscolhida}"
+                                 required="true" requiredMessage="Selecione a marca"
+                                 converter="#{marcaConverter}"
+                                 id="edMarca">
+                    <f:selectItems value="#{cadastroVeiculo.marcasItens}"/>
+                    <p:ajax event="change" update="edModelo"/>
+                </p:selectOneMenu>
+
+                <p:outputLabel for="edModelo" value="Modelo:"/>
+                <p:selectOneMenu value="#{cadastroVeiculo.veiculo.modelo}"
+                                 id="edModelo" required="true" 
+                                 converter="#{modeloConverter}"
+                                 requiredMessage="Selecione o modelo">
+                    <f:selectItems value="#{cadastroVeiculo.modelosItens}"/>
+                </p:selectOneMenu>
+
+                <p:outputLabel for="edCor" value="Cor:"/>
+                <p:inputText value="#{cadastroVeiculo.veiculo.cor}"
+                             id="edCor"/>
+
+                <p:outputLabel for="edAno" value="Ano:"/>
+                <p:inputText value="#{cadastroVeiculo.veiculo.anoFabricacao}"
+                             id="edAno" validatorMessage="Ano deve estar entre 1940 e 2023">
+                    <f:validateLongRange minimum="1940" maximum="2023"/>
+                </p:inputText>
+
+            </p:panelGrid>
+            <p:commandButton value="Confirmar"
+                             update="pnlForm,:tabVeiculos,:mensagens"
+                             action="#{cadastroVeiculo.confirmar}"/>
+            <p:commandButton value="Cancelar" immediate="true"
+                             resetValues="true"
+                             action="#{cadastroVeiculo.cancelar}"
+                             update="pnlForm"/>
+        </h:form>
+        <h:panelGroup layout="block">
+            <h:form>
+                <h2>Filtros:</h2>
+                <p:outputLabel value="Marca:" for="filtroMarca"/>
+                <p:selectOneMenu value="#{cadastroVeiculo.marcaFiltro}"
+                                 id="filtroMarca"
+                                 converter="#{marcaConverter}">
+                    <f:selectItems value="#{cadastroVeiculo.marcasItens}"/>
+                </p:selectOneMenu>
+                <p:outputLabel value="Ano entre "/>
+                <p:inputText value="#{cadastroVeiculo.anoInicio}" size="4"/>
+                <p:outputLabel value=" e "/>
+                <p:inputText value="#{cadastroVeiculo.anoFim}" size="4"/>
+                <p:commandButton value="Filtrar" 
+                                 action="#{cadastroVeiculo.filtrar}"
+                                 update=":tabVeiculos"/>
+            </h:form>
+        </h:panelGroup>
+        <p:dataTable id="tabVeiculos"
+                     value="#{cadastroVeiculo.filtrados}" var="v">
+            <p:column headerText="Placa" sortBy="#{v.placa}">
+                <h:outputText value="#{v.placa}"/>
+            </p:column>
+            <p:column headerText="Marca">
+                <h:outputText value="#{v.modelo.marca.nome}"/>
+            </p:column>
+            <p:column headerText="Modelo">
+                <h:outputText value="#{v.modelo.nome}"/>
+            </p:column>
+            <p:column headerText="Ano" sortBy="#{v.anoFabricacao}">
+                <h:outputText value="#{v.anoFabricacao}"/>
+            </p:column>
+            <p:column headerText="Cor">
+                <h:outputText value="#{v.cor}"/>
+            </p:column>
+            <p:column headerText="Ações">
+                <h:form>
+                    <p:commandButton value="X" update=":tabVeiculos"                                     
+                                     action="#{cadastroVeiculo.remover(v)}">
+                        <p:confirm message="Remover este veículo?"/>
+                    </p:commandButton>
+                    <p:commandButton value="Editar" update=":cadForm:pnlForm"
+                                     action="#{cadastroVeiculo.editar(v)}"/>
+                </h:form>
+            </p:column>
+        </p:dataTable>
+        <h:form>
+            <p:confirmDialog header="Confirmação" width="300" global="true" height="200">
+                <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes"/>
+                <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no"/>
+            </p:confirmDialog>
+        </h:form>
+        <p:growl id="mensagens"/>
+    </h:body>
+</html>
+

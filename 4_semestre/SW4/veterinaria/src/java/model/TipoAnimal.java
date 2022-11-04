@@ -9,13 +9,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tipo_animal", schema = "pubilc")
+@Table(name = "tipo_animal", schema = "public")
 public class TipoAnimal implements Serializable {
-    
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    
+
     @Column(nullable = false, length = 200)
     private String descricao;
 
@@ -34,8 +34,6 @@ public class TipoAnimal implements Serializable {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-    
-    
 
     @Override
     public int hashCode() {
@@ -55,12 +53,9 @@ public class TipoAnimal implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        
-        
+
         final TipoAnimal other = (TipoAnimal) obj;
         return this.id == other.id;
     }
-    
-    
 
 }

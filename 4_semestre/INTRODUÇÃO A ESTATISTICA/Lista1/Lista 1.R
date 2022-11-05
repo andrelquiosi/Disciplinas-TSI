@@ -11,7 +11,7 @@ c(x_sum, x_len)
 x_med <- x_sum / x_len
 x_med
 
-# MODAL
+# MEDIANA
 x_mediana <- median(x)
 x_mediana
 
@@ -318,12 +318,12 @@ fa <- col_1
 
 # ORDENAR VALORES
 d_unico_ordenado <- unique(sort(d))
-
+jpeg("histograma.jpg", width = 350, height = 350)
 freq <- cbind(d_unico_ordenado, fa)
 suppressWarnings(suppressMessages(library("arm")))
 discrete.histogram(d, freq = TRUE, xlab = "", bar.width = 0.8)
 lines(freq, type = "b", lwd = 3)
-
+dev.off()
 # INTERPRETAÇÃO: O GRÁFICO MOSTRA QUE DOIS VALORES SE
 # DESTACAM COMO MAIS FREQUENTES, UM COM FREQUENCIA 3 E OUTRO 2,
 # SENDO OS OUTROS VALORES COM IGUAL FREQUENCIA E NÃO TENDO OUTLIERS.

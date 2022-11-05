@@ -44,8 +44,9 @@ x_cv
 x_qua <- quantile(x)
 x_qua
 
-# AMPLITUDE INTERQUARTÍLICA
-quantile(x)[4] - quantile(x)[2]
+# AMPLITUDE INTERQUARTIL
+x_amp = quantile(x)[4] - quantile(x)[2]
+x_amp
 
 # LIMITE INFERIOR(LI)
 x_li <- quantile(x)[2] - 1.5 * (quantile(x)[4] - quantile(x)[2])
@@ -60,8 +61,11 @@ x_ls
 # (D)-------------------------
 
 # BOXPLOT
+
 par(mar = c(3, 2, 1, 1))
+jpeg("4_semestre/INTRODUÇÃO A ESTATISTICA/Prova1/boxplot_prova.jpg", width = 350, height = 350)
 boxplot(x)
+dev.off()
 
 # INTERPRETAÇÃO: O GRÁFICO É ASSIMÉTRICO POSITIVO, PELA MEDIANA
 # ESTAR MAIS PROXIMA DO PRIMEIRO QUARTIL.
@@ -71,7 +75,7 @@ boxplot(x)
 # (E)------------------------
 
 # ASSIMETRIA DE PEARSON
-library(moments)
+library("moments")
 x_as <- skewness(x)
 x_as
 
@@ -393,12 +397,13 @@ par(mar = c(3, 2, 1, 1))
 fa <- col_1
 
 # ORDENAR VALORES
+jpeg("4_semestre/INTRODUÇÃO A ESTATISTICA/Prova1/histograma_prova.jpg", width = 800, height = 800)
 d_unico_ordenado <- unique(sort(x))
-
 freq <- cbind(d_unico_ordenado, fa)
 suppressWarnings(suppressMessages(library("arm")))
-discrete.histogram(X, freq = TRUE, xlab = "", bar.width = 0.8)
+discrete.histogram(x, freq = TRUE, xlab = "", bar.width = 0.8)
 lines(freq, type = "b", lwd = 3)
+dev.off()
 
 # INTERPRETAÇÃO: O GRÁFICO MOSTRA QUE CINCO VALORES SE
 # DESTACAM COMO MAIS FREQUENTES, UM COM FREQUENCIA 3 E OUTROS 2,

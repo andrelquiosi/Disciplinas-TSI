@@ -18,11 +18,13 @@ public class Filosofo implements Runnable {
     };
     Mesa mesa;
     State estado;
+    String nome;
 
-    public Filosofo(int garfoDireita, int garfoEsquerda, Mesa mesa) {
+    public Filosofo(String nome, Mesa mesa, int garfoEsquerda, int garfoDireita) {
         this.garfoDireita = garfoDireita;
         this.garfoEsquerda = garfoEsquerda;
         this.mesa = mesa;
+        this.nome = nome;
         estado = State.PENSANDO;
     }
 

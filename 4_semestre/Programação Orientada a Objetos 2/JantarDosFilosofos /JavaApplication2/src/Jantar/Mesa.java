@@ -2,7 +2,7 @@ package Jantar;
 
 public class Mesa {
 
-    private Garfo garfos[] = {new Garfo(),
+    private Garfo garfos[] = {
          new Garfo(), new Garfo(),
          new Garfo(), new Garfo(),
          new Garfo()};

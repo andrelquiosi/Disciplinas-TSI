@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Veterinaria</title>
+    </h:head>
+    <h:body>
+        <p:panel style="width: 95%;">
+            <h:link value="Tipos de Animais" outcome="cadTipoAnimal.xhtml"/>
+            <p:spacer width="10px"/>
+            <h:link value="Veterinários" outcome="cadVeterinarios.xhtml"/>
+        </p:panel>
+        <h2>Marcação de Consultas</h2>
+        <h:form id="frmConsulta">
+            <p:panelGrid columns="2">
+                <p:outputLabel for="cbTipo" value="Tipo de Animal:"/>
+                <p:selectOneMenu value="#{consultaBean.tipoAnimal}" converter="#{tpAnimalCnvtr}" id="cbTipo">
+                    <f:selectItems value="#{tipoAnimalBean.tiposAnimaisAsItems}"/>
+                    <p:ajax event="change" update="cbVets"/>
+                    
+                </p:selectOneMenu>
+
+                <p:outputLabel value="Verterinário"/>
+                <p:selectOneMenu value="#{consultaBean.consulta.veterinario}"
+                                 converter="#{vetConverter}" id="cbVets">
+                    <f:selectItems value="#{consultaBean.vetsPorTipo}"/>
+                </p:selectOneMenu>
+
+                <!-- TODO: continuar formulário... -->
+            </p:panelGrid>
+            <p:commandButton value="Salvar" action="#{consultaBean.salvar}"
+                             update=":frmConsulta"/>
+        </h:form>
+    </h:body>
+</html>
+

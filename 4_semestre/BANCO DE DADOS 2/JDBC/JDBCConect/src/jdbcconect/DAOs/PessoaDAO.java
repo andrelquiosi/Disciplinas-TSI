@@ -1,4 +1,4 @@
-package jdbcconect;
+package jdbcconect.DAOs;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,5 +24,7 @@ public class PessoaDAO {
         conexao.close();
 
         return pessoas;
-    }    
+    }   
+    public void criar(){}
+    
 }

@@ -28,17 +28,21 @@
                 <p:outputLabel value="Especialidade"/>                
                 <p:selectOneMenu value="#{veterinariosBean.veterinario.especialidade}" converter="#{tpAnimalCnvtr}">
                     <f:selectItems value="#{tipoAnimalBean.tiposAnimaisAsItems}"/>
+                    
                 </p:selectOneMenu>
             </h:panelGrid>
             <p:commandButton ajax="false" action="#{veterinariosBean.salvar}" value="Salvar"/>
         </h:form>
         
-        <p:dataTable id="tabVeterinarios" value="#{veterinariosBean.veterinario}" var="tp">
+        <p:dataTable id="tabVeterinarios" value="#{veterinariosBean.veterinarios}" var="tp">
             <p:column headerText="Código">
-                <h:outputText value="#{tp}"/>
+                <h:outputText value="#{tp.crmv}"/>
             </p:column>
             <p:column headerText="Nome">
-                <h:outputText value="#{tp}"/>
+                <h:outputText value="#{tp.nome}"/>
+            </p:column>
+            <p:column headerText="E-mail">
+                <h:outputText value="#{tp.email}"/>
             </p:column>
             <p:column>
                 <h:form>

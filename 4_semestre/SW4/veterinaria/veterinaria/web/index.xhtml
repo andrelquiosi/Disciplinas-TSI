@@ -16,24 +16,100 @@
         <h2>Marcação de Consultas</h2>
         <h:form id="frmConsulta">
             <p:panelGrid columns="2">
+
                 <p:outputLabel for="cbTipo" value="Tipo de Animal:"/>
-                <p:selectOneMenu value="#{consultaBean.tipoAnimal}" converter="#{tpAnimalCnvtr}" id="cbTipo">
+                <p:selectOneMenu value="#{consultaBean.tipoAnimal}"
+                                 converter="#{tpAnimalCnvtr}" id="cbTipo">
                     <f:selectItems value="#{tipoAnimalBean.tiposAnimaisAsItems}"/>
                     <p:ajax event="change" update="cbVets"/>
-                    
                 </p:selectOneMenu>
 
-                <p:outputLabel value="Verterinário"/>
+                <p:outputLabel for="cbVets" value="Verterinário"/>
                 <p:selectOneMenu value="#{consultaBean.consulta.veterinario}"
                                  converter="#{vetConverter}" id="cbVets">
                     <f:selectItems value="#{consultaBean.vetsPorTipo}"/>
                 </p:selectOneMenu>
 
-                <!-- TODO: continuar formulário... -->
+                <p:outputLabel for="edTutor" value="Tutor:"/>
+                <p:inputText value="#{consultaBean.consulta.tutor}"
+                             id="edTutor"
+                             required="true" requiredMessage="Informe um Tutor"
+                             />
+
+                <p:outputLabel for="edNomeAnimal" value="Nome do Animal:"/>
+                <p:inputText value="#{consultaBean.consulta.animal}"
+                             required="true" requiredMessage="Informe um nome para o Animal"
+                             id="edNomeAnimal"/>
+
+                <p:outputLabel for="edMotivo" value="Motivo:"/>
+                <p:inputText value="#{consultaBean.consulta.queixa}"
+                             required="true" requiredMessage="Informe o motivo da Consulta"
+                             id="edMotivo"/>
+
+                <p:outputLabel for="edTelefone" value="Telefone:"/>
+                <p:inputMask value="#{consultaBean.consulta.telefone}"
+                             required="true" requiredMessage="Informe um Telefone para contato"
+                             id="edTelefone"
+                             mask="(99)9 9999-9999"/>
+
+                <p:outputLabel for="edData" value="Data/Hora:"/>
+                <p:calendar id="edData"
+                            pattern="MM/dd/yyyy HH:mm" 
+                            value="#{consultaBean.consulta.quando}"
+                            readonlyInput="true"
+                            required="true" requiredMessage="Escolha uma Data e Hora"
+                            minHour="8" maxHour="17" stepMinute="15"
+                            beforeShowDay="tuesdaysAndFridaysDisabled"/>
+                <script>
+                    //<![CDATA[
+                    function tuesdaysAndFridaysDisabled(date)
+                    {
+                        var day = date.getDay();
+                        return [(day !== 0 && day !== 1 && day !== 5 && day !== 6), ''];
+                    }
+                    //]]>
+                </script>
+
             </p:panelGrid>
             <p:commandButton value="Salvar" action="#{consultaBean.salvar}"
-                             update=":frmConsulta"/>
+                             update=":frmConsulta, :messages"/>
         </h:form>
+        
+        <p:dataTable id="tabConsultas"
+                     value="#{consultaBean.consultas}" var="v">
+            <p:column headerText="Data/Hora" sortBy="#{v.quando}">
+                <h:outputText value="#{v.quando}" />
+            </p:column>
+            <p:column headerText="Veterinario">
+                <h:outputText value="#{v.veterinario.nome}"/>
+            </p:column>
+            <p:column headerText="Tipo Animal">
+                <h:outputText value="#{v.veterinario.especialidade}"/>
+            </p:column>
+            <p:column headerText="Nome Animal">
+                <h:outputText value="#{v.animal}"/>
+            </p:column>
+            <p:column headerText="Tutor">
+                <h:outputText value="#{v.tutor}"/>
+            </p:column>
+            <p:column headerText="Motivo">
+                <h:outputText value="#{v.queixa}"/>
+            </p:column>
+            <p:column headerText="Telefone">
+                <h:outputText value="#{v.telefone}"/>
+            </p:column>
+            <p:column headerText="Ações">
+                <h:form>
+                    <p:commandButton value="X" update=":tabConsultas"                                     
+                                     action="#{consultaBean.remover(v)}">
+                        <p:confirm message="Remover esta Consulta?"/>
+                    </p:commandButton>
+                    <p:commandButton value="Editar" update=":consultaForm:pnlForm"
+                                     action="#{consultaBean.editar(v)}"/>
+                </h:form>
+            </p:column>
+        </p:dataTable>
+        <p:growl id="messages"/>
     </h:body>
 </html>
 

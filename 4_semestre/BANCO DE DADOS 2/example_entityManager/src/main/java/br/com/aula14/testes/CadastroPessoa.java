@@ -1,23 +1,24 @@
 package br.com.aula14.testes;
 
+import br.com.aula14.dao.PessoaDAO;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
 import br.com.aula14.model.Pessoa;
+import br.com.aula14.util.JPAUtil;
 
 public class CadastroPessoa {
 
     public static void main(String[] args) {
         Pessoa p = new Pessoa();
-        p.setNome("Nome 1");
+        p.setNome("Nome 3");
         p.setIdade(16);
 
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("aula14");
-        EntityManager em = factory.createEntityManager();
+        EntityManager em = JPAUtil.getEntityManager();
+        PessoaDAO pessoaDao = new PessoaDAO(em);
+        
+        pessoaDao.ler();
 
         em.getTransaction().begin();
-        em.persist(p);
+        pessoaDao.cadastrar(p);
         em.getTransaction().commit();
         em.close();
 

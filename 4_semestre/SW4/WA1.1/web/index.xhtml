@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>CLientes</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            Nome: <h:inputText value="#{clienteBean.CLiente.nome}"/><br/>
+            CPF:<h:inputText value="#{clienteBean.CLiente.cpf}"/><br/>
+            Limite: <h:inputText value="#{clienteBean.CLiente.limite}"/><br/>
+            Credito: <h:inputText value="#{clienteBean.CLiente.credito}"/><br/>
+            <h:commandButton value="Enviar" action="#{clienteBean.confirmar}"/>
+        </h:form>
+        
+        <h:dataTable value="#{clienteBean.listaClientes}" var="c">
+            <h:column><h:outputText value="#{c.nome}"/></h:column>
+            <h:column><h:outputText value="#{c.cpf}"/></h:column>
+            <h:column><h:outputText value="#{c.limite}"/></h:column>
+            <h:column><h:outputText value="#{c.credito}"/></h:column>
+        </h:dataTable>
+    </h:body>
+</html>
+

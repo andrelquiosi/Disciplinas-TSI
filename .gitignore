@@ -42,3 +42,28 @@
 /4_semestre/Programação Orientada a Objetos 2/ProvaPratica/BarbeiroDorminhoco/build/
 /4_semestre/Programação Orientada a Objetos 2/LavadorDePratos/nbproject/private/
 /4_semestre/Programação Orientada a Objetos 2/LavadorDePratos/build/
+out
+.classpath
+.project
+.settings
+.metadata
+*.log
+*.zip
+*.class
+*.swp
+target
+classes
+build
+bin
+classes
+*~
+/4_semestre/Programacao_Orientad_ a_Objetos_2/BarbeiroDorminhoco/nbproject/private/
+/4_semestre/Programacao_Orientad_ a_Objetos_2/JantarDosFilosofos /JavaApplication2/dist/
+/4_semestre/Programacao_Orientad_ a_Objetos_2/JantarDosFilosofos /JavaApplication2/nbproject/private/
+/4_semestre/Programacao_Orientad_ a_Objetos_2/LavadorDePratos/nbproject/private/
+/4_semestre/Programacao_Orientad_ a_Objetos_2/ProvaPratica/ProvaPratica/dist/
+/4_semestre/Programacao_Orientad_ a_Objetos_2/ProvaPratica/ProvaPratica/nbproject/private/
+/4_semestre/Programacao_Orientad_ a_Objetos_2/counter/nbproject/private/
+/4_semestre/Programacao_Orientad_ a_Objetos_2/exemplo fixed thread pool/nbproject/private/
+/4_semestre/BANCO_DE_DADOS_2/JDBC/JDBCConect/nbproject/private/
+/4_semestre/Programacao_Orientad_ a_Objetos_2/network/server/nbproject/private/

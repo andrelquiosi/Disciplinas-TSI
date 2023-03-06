@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="438px" preserveAspectRatio="none" style="width:614px;height:438px;background:#FFFFFF;" version="1.1" viewBox="0 0 614 438" width="614px" zoomAndPan="magnify"><defs/><g><!--MD5=[c41b820b35132629255d4ca4f41e2efe]
+cluster Adoção--><g id="cluster_Adoção"><path d="M128.5,6 L188.5,6 A3.75,3.75 0 0 1 191,8.5 L198,28.2969 L604.5,28.2969 A2.5,2.5 0 0 1 607,30.7969 L607,390.5 A2.5,2.5 0 0 1 604.5,393 L128.5,393 A2.5,2.5 0 0 1 126,390.5 L126,8.5 A2.5,2.5 0 0 1 128.5,6 " style="stroke:#000000;stroke-width:1.5;fill:none;"/><line style="stroke:#000000;stroke-width:1.5;fill:none;" x1="126" x2="198" y1="28.2969" y2="28.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="59" x="130" y="20.9951">Adoção</text></g><g id="elem_visualizar"><ellipse cx="232.2495" cy="67.0744" fill="#F1F1F1" rx="78.7495" ry="26.0744" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="91" x="182.1528" y="62.5636">Visualizar pet</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="85" x="187.1528" y="78.8605">para adoção</text></g><g id="elem_reservar"><ellipse cx="521.24" cy="67.048" fill="#F1F1F1" rx="68.24" ry="16.048" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="88" x="474.24" y="70.7956">Reservar Pet</text></g><g id="elem_ofertar"><ellipse cx="231.8925" cy="143.0785" fill="#F1F1F1" rx="63.3925" ry="15.0785" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="74" x="191.8925" y="146.8261">Ofertar Pet</text></g><g id="elem_avaliar_oferta"><ellipse cx="521.1011" cy="241.1202" fill="#F1F1F1" rx="68.6011" ry="16.1202" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="89" x="473.6011" y="244.8678">Avaliar Oferta</text></g><g id="elem_documentar"><ellipse cx="232.1144" cy="355.9229" fill="#F1F1F1" rx="90.1144" ry="20.4229" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="142" x="161.1144" y="358.7696">Documentar Adoção</text></g><g id="elem_cadatro_pet"><ellipse cx="232.0634" cy="209.9127" fill="#F1F1F1" rx="70.0634" ry="16.4127" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="93" x="182.5634" y="213.6602">Cadastrar Pet</text></g><g id="elem_visualizar_reservas"><ellipse cx="232.228" cy="281.0456" fill="#F1F1F1" rx="85.728" ry="19.5456" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="132" x="166.228" y="283.8923">Visualizar Reservas</text></g><g id="elem_consultar"><ellipse cx="521.0634" cy="341.9127" fill="#F1F1F1" rx="70.0634" ry="16.4127" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="93" x="471.5634" y="345.6602">Consultar Pet</text></g><!--MD5=[1069adc04286a75b2583ad749e705792]
+entity adotante--><g id="elem_adotante"><ellipse cx="42.5" cy="25.5" fill="#F1F1F1" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M42.5,33.5 L42.5,60.5 M29.5,41.5 L55.5,41.5 M42.5,60.5 L29.5,75.5 M42.5,60.5 L55.5,75.5 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="63" x="11" y="89.9951">Adotante</text></g><!--MD5=[9e99fae5e559954a3735b2d73729dd0f]
+entity doador--><g id="elem_doador"><ellipse cx="42.5" cy="136.5" fill="#F1F1F1" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M42.5,144.5 L42.5,171.5 M29.5,152.5 L55.5,152.5 M42.5,171.5 L29.5,186.5 M42.5,171.5 L55.5,186.5 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="51" x="17" y="200.9951">Doador</text></g><!--MD5=[459a2c6c1a6176b0517558c579db1d33]
+entity atendente--><g id="elem_atendente"><ellipse cx="42.5" cy="280.5" fill="#F1F1F1" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M42.5,288.5 L42.5,315.5 M29.5,296.5 L55.5,296.5 M42.5,315.5 L29.5,330.5 M42.5,315.5 L55.5,330.5 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="73" x="6" y="344.9951">Atendente</text></g><!--MD5=[8f67270580bc938cb1411f894cd3aecb]
+reverse link visualizar to reservar--><g id="link_visualizar_reservar"><path d="M315.93,67 C359.46,67 412.09,67 453,67 " fill="none" id="visualizar-backto-reservar" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="310.67,67,319.67,71,315.67,67,319.67,63,310.67,67" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="67" x="353" y="63.0669">«extends»</text></g><!--MD5=[00e786e5e8f61860a450c8fe2e1398a7]
+link documentar to consultar--><g id="link_documentar_consultar"><path d="M320.28,351.74 C360.84,349.76 408.52,347.44 447.12,345.55 " fill="none" id="documentar-to-consultar" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="452.26,345.3,443.0659,341.7689,447.2666,345.5575,443.478,349.7583,452.26,345.3" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="67" x="353" y="343.0669">«extends»</text></g><!--MD5=[525cbbb678be97151616feafa08b2e32]
+link ofertar to avaliar_oferta--><g id="link_ofertar_avaliar_oferta"><path d="M269.06,155.31 C321.81,173.32 419.91,206.82 476.56,226.17 " fill="none" id="ofertar-to-avaliar_oferta" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="481.58,227.88,474.355,221.1868,476.8481,226.2646,471.7703,228.7578,481.58,227.88" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="61" x="356" y="183.0669">«include»</text></g><!--MD5=[8cd2df8c62fffaa84d040ef92a8201ed]
+link adotante to visualizar--><g id="link_adotante_visualizar"><path d="M74.04,56.95 C95.94,58.35 126.44,60.31 154.74,62.12 " fill="none" id="adotante-visualizar" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[485ff66f1ddb511620fca0505976b023]
+link doador to ofertar--><g id="link_doador_ofertar"><path d="M68.01,162.99 C95.11,159.67 139.65,154.2 175.33,149.83 " fill="none" id="doador-ofertar" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[7f9d8a8a6b338213aa3975939ba8b661]
+link avaliar_oferta to atendente--><g id="link_avaliar_oferta_atendente"><path d="M501.72,256.37 C487.01,269.26 466.35,288.63 451,308 C434.9,328.31 440.99,341.51 421,358 C384.88,387.78 368.11,385.87 322,394 C232.71,409.73 200.69,431.19 118,394 C96.84,384.48 79.26,365.66 66.5,348.25 " fill="none" id="avaliar_oferta-atendente" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[15e7c5a951d1bdafe5c2f99e80792556]
+link atendente to cadatro_pet--><g id="link_atendente_cadatro_pet"><path d="M79.34,272.63 C90.88,262.21 104.27,251.66 118,244 C136.61,233.62 158.75,226.07 178.48,220.75 " fill="none" id="atendente-cadatro_pet" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[477c38b2a12347fd8d760497ecd6bcc7]
+link atendente to documentar--><g id="link_atendente_documentar"><path d="M79.21,318.76 C104.82,325.04 139.95,333.66 169.96,341.02 " fill="none" id="atendente-documentar" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[7777a9ad61fa863f59ad8d5c08af700c]
+link atendente to visualizar_reservas--><g id="link_atendente_visualizar_reservas"><path d="M79.21,304.47 C102.27,300.91 133.04,296.15 160.86,291.85 " fill="none" id="atendente-visualizar_reservas" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[50b826234488e034aa908632cedfcf10]
+@startuml adocao
+
+left to right direction
+
+actor "Adotante" as adotante
+actor "Doador" as doador
+actor "Atendente" as atendente
+
+
+package "Adoção" {
+
+    usecase "Visualizar pet \npara adoção" as visualizar
+    usecase "Reservar Pet" as reservar
+    usecase "Ofertar Pet" as ofertar
+
+    usecase "Avaliar Oferta" as avaliar_oferta
+    usecase "Documentar Adoção" as documentar
+    usecase "Cadastrar Pet" as cadatro_pet
+    usecase "Visualizar Reservas" as visualizar_reservas
+    usecase "Consultar Pet" as consultar
+
+
+    visualizar <.. reservar : << extends >>
+    documentar ..> consultar : << extends >>
+    ofertar ..> avaliar_oferta : << include >>
+
+    
+
+
+}
+
+adotante - - visualizar
+doador - - ofertar
+atendente -up- avaliar_oferta
+atendente -do- cadatro_pet
+atendente -down- documentar
+atendente -down- visualizar_reservas
+
+
+
+
+
+@enduml
+
+PlantUML version 1.2022.3(Tue Mar 29 13:10:57 BRT 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: pt
+Country: BR
+--></g></svg>

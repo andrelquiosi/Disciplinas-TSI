@@ -13,7 +13,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class Consulta implements Serializable {
+public class Consulta{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -54,11 +54,6 @@ public class Consulta implements Serializable {
             return false;
         }
         return true;
-    }
-
-    @Override
-    public String toString() {
-        return "model.Consulta[ id=" + id + " ]";
     }
 
     public Veterinario getVeterinario() {

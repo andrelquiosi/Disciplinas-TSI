@@ -1,5 +1,0 @@
-br/com/aula16/loja/util/JPAUtil.class
-br/com/aula16/loja/modelo/Categoria.class
-br/com/aula16/loja/modelo/Produto.class
-br/com/aula16/loja/dao/ProdutoDao.class
-br/com/aula16/loja/testes/CadastroDeProduto.class

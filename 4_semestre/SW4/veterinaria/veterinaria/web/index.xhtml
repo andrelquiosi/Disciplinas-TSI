@@ -25,11 +25,23 @@
                 </p:selectOneMenu>
 
                 <p:outputLabel for="cbVets" value="Verterinário"/>
-                <p:selectOneMenu value="#{consultaBean.consulta.veterinario}"
+                <p:selectOneMenu value="#{consultaBean.veterinario}"
                                  converter="#{vetConverter}" id="cbVets">
                     <f:selectItems value="#{consultaBean.vetsPorTipo}"/>
+                    <p:ajax event="change" update=":tabConsultas"/>
                 </p:selectOneMenu>
 
+                <p:outputLabel for="edData" value="Data/Hora:"/>
+                <p:calendar id="edData"
+                            pattern="MM/dd/yyyy HH:mm" 
+                            value="#{consultaBean.quando}"
+                            readonlyInput="true"
+                            required="true" requiredMessage="Escolha uma Data e Hora"
+                            minHour="8" maxHour="17" stepMinute="15"
+                            validator="agendamentoDateValidator"
+                            >
+                    <p:ajax event="dateSelect" update=":tabConsultas"/>
+                </p:calendar>
                 <p:outputLabel for="edTutor" value="Tutor:"/>
                 <p:inputText value="#{consultaBean.consulta.tutor}"
                              id="edTutor"
@@ -52,29 +64,13 @@
                              id="edTelefone"
                              mask="(99)9 9999-9999"/>
 
-                <p:outputLabel for="edData" value="Data/Hora:"/>
-                <p:calendar id="edData"
-                            pattern="MM/dd/yyyy HH:mm" 
-                            value="#{consultaBean.consulta.quando}"
-                            readonlyInput="true"
-                            required="true" requiredMessage="Escolha uma Data e Hora"
-                            minHour="8" maxHour="17" stepMinute="15"
-                            beforeShowDay="tuesdaysAndFridaysDisabled"/>
-                <script>
-                    //<![CDATA[
-                    function tuesdaysAndFridaysDisabled(date)
-                    {
-                        var day = date.getDay();
-                        return [(day !== 0 && day !== 1 && day !== 5 && day !== 6), ''];
-                    }
-                    //]]>
-                </script>
-
-            </p:panelGrid>
+            </p:panelGrid>  
             <p:commandButton value="Salvar" action="#{consultaBean.salvar}"
-                             update=":frmConsulta, :messages"/>
+                             update=":frmConsulta,:tabConsultas, :messages"/>
+            <p:commandButton value="Limpar" immediate="true"
+                             resetValues="true" action="#{consultaBean.limpar}"
+                             update=":frmConsulta,:tabConsultas, :messages"/>
         </h:form>
-        
         <p:dataTable id="tabConsultas"
                      value="#{consultaBean.consultas}" var="v">
             <p:column headerText="Data/Hora" sortBy="#{v.quando}">
@@ -84,7 +80,7 @@
                 <h:outputText value="#{v.veterinario.nome}"/>
             </p:column>
             <p:column headerText="Tipo Animal">
-                <h:outputText value="#{v.veterinario.especialidade}"/>
+                <h:outputText value="#{v.veterinario.especialidade.descricao}"/>
             </p:column>
             <p:column headerText="Nome Animal">
                 <h:outputText value="#{v.animal}"/>
@@ -98,14 +94,14 @@
             <p:column headerText="Telefone">
                 <h:outputText value="#{v.telefone}"/>
             </p:column>
+            <p:column headerText="Código">
+                <h:outputText value="#{v.id}"/>
+            </p:column>
             <p:column headerText="Ações">
                 <h:form>
                     <p:commandButton value="X" update=":tabConsultas"                                     
                                      action="#{consultaBean.remover(v)}">
-                        <p:confirm message="Remover esta Consulta?"/>
                     </p:commandButton>
-                    <p:commandButton value="Editar" update=":consultaForm:pnlForm"
-                                     action="#{consultaBean.editar(v)}"/>
                 </h:form>
             </p:column>
         </p:dataTable>

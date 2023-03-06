@@ -14,7 +14,7 @@
             <h:link value="Consultas" outcome="index.xhtml"/>
         </p:panel>
         <h2>Cadastro de Veterinários</h2>
-        <h:form>
+        <h:form id="formVeterinarios">
             <h:panelGrid columns="2">
                 <p:outputLabel value="Nome"/>
                 <p:inputText value="#{veterinariosBean.veterinario.nome}"/>
@@ -31,7 +31,8 @@
                     
                 </p:selectOneMenu>
             </h:panelGrid>
-            <p:commandButton ajax="false" action="#{veterinariosBean.salvar}" value="Salvar"/>
+            <p:commandButton action="#{veterinariosBean.salvar}" value="Salvar"
+                             update=":formVeterinarios, :tabVeterinarios"/>
         </h:form>
         
         <p:dataTable id="tabVeterinarios" value="#{veterinariosBean.veterinarios}" var="tp">
@@ -43,6 +44,9 @@
             </p:column>
             <p:column headerText="E-mail">
                 <h:outputText value="#{tp.email}"/>
+            </p:column>
+            <p:column headerText="Especialidade">
+                <h:outputText value="#{tp.especialidade.descricao}"/>
             </p:column>
             <p:column>
                 <h:form>

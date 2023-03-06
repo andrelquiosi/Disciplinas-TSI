@@ -14,4 +14,6 @@ public interface ServicosCliente {
     public void inserir(Cliente cliente);
     public void remover(Cliente cliente);
     public List<Cliente> filtrar(String filtro);
+    public Cliente buscar(String cpf);
+    public void alterar(Cliente cliente);
 }

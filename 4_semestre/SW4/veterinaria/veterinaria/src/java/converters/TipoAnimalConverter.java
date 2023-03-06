@@ -20,9 +20,9 @@ public class TipoAnimalConverter implements Converter<TipoAnimal> {
     @Override
     public TipoAnimal getAsObject(FacesContext context, UIComponent component, String value) {
         try {
-            Long id = Long.parseLong(value);
+            Long id = Long.valueOf(value);
             return em.find(TipoAnimal.class, id);
-        } catch(Throwable t) {
+        } catch(NumberFormatException t) {
             t.printStackTrace();
         }
         return null;
@@ -33,7 +33,7 @@ public class TipoAnimalConverter implements Converter<TipoAnimal> {
         if (value == null) {
             return "NULL";
         }
-        return String.valueOf( value.getId( ));
+        return String.valueOf( value.getId());
     }
     
 }

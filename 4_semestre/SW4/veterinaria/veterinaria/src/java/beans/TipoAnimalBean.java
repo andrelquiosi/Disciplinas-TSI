@@ -10,6 +10,11 @@ import javax.faces.model.SelectItem;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.transaction.HeuristicMixedException;
+import javax.transaction.HeuristicRollbackException;
+import javax.transaction.NotSupportedException;
+import javax.transaction.RollbackException;
+import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 import model.TipoAnimal;
 
@@ -21,7 +26,7 @@ public class TipoAnimalBean implements Serializable {
     EntityManager em;
 
     @Resource
-    UserTransaction trx;
+    UserTransaction userTransaction;
 
     TipoAnimal tipo;
 
@@ -33,7 +38,7 @@ public class TipoAnimalBean implements Serializable {
     }
 
     public List<SelectItem> getTiposAnimaisAsItems() {
-        tiposAnimaisAsItems = new LinkedList<SelectItem>();
+        tiposAnimaisAsItems = new LinkedList<>();
         for (TipoAnimal ta : getTipos()) {
             tiposAnimaisAsItems.add( new SelectItem( ta, ta.getDescricao() ) );
         }
@@ -41,6 +46,13 @@ public class TipoAnimalBean implements Serializable {
     }
 
         
+    public TipoAnimal getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoAnimal tipo) {
+        this.tipo = tipo;
+    }
     public List<TipoAnimal> getTipos() {
         if (tipos == null) {
             try {
@@ -50,33 +62,23 @@ public class TipoAnimalBean implements Serializable {
                         TipoAnimal.class);
                 tipos = consulta.getResultList();
             } catch (Throwable t) {
-                t.printStackTrace();
-                tipos = new LinkedList<TipoAnimal>();
+                tipos = new LinkedList<>();
             }
         }
         return tipos;
     }
 
-    public TipoAnimal getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(TipoAnimal tipo) {
-        this.tipo = tipo;
-    }
-
     public String salvar() {
         try {
-            trx.begin();
+            userTransaction.begin();
             em.persist(tipo);
-            trx.commit();
+            userTransaction.commit();
             tipo = new TipoAnimal();
             tipos = null;
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        } catch (IllegalStateException | SecurityException | HeuristicMixedException | HeuristicRollbackException | NotSupportedException | RollbackException | SystemException ex) {
             try {
-                trx.rollback();
-            } catch (Exception ex2) {
+                userTransaction.rollback();
+            } catch (IllegalStateException | SecurityException | SystemException ex2) {
             }
         }
         return null;
@@ -84,16 +86,15 @@ public class TipoAnimalBean implements Serializable {
 
     public void remover(TipoAnimal tp) {
         try {
-            trx.begin();
+            userTransaction.begin();
             tp = em.merge(tp);
             em.remove(tp);
             tipos.remove( tp );
-            trx.commit();
-        } catch (Throwable t) {
-            t.printStackTrace();
+            userTransaction.commit();
+        } catch (IllegalStateException | SecurityException | HeuristicMixedException | HeuristicRollbackException | NotSupportedException | RollbackException | SystemException t) {
             try {
-                trx.rollback();
-            } catch (Exception ex2) {
+                userTransaction.rollback();
+            } catch (IllegalStateException | SecurityException | SystemException ex2) {
             }
         }
     }

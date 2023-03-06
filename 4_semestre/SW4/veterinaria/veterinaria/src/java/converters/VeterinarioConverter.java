@@ -1,6 +1,6 @@
 package converters;
 
-import javax.ejb.ApplicationException;
+import javax.enterprise.context.ApplicationScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -10,7 +10,7 @@ import javax.persistence.PersistenceContext;
 import model.Veterinario;
 
 @Named("vetConverter")
-@ApplicationException
+@ApplicationScoped
 public class VeterinarioConverter implements Converter<Veterinario> {
 
     @PersistenceContext
@@ -21,7 +21,7 @@ public class VeterinarioConverter implements Converter<Veterinario> {
         try {
             Long id = Long.parseLong(value);
             return em.find(Veterinario.class, id);
-        } catch (Throwable t) {
+        } catch (NumberFormatException t) {
             t.printStackTrace();
         }
         return null;

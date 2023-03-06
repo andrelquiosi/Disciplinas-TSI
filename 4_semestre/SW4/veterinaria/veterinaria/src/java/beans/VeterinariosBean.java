@@ -8,6 +8,11 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.transaction.HeuristicMixedException;
+import javax.transaction.HeuristicRollbackException;
+import javax.transaction.NotSupportedException;
+import javax.transaction.RollbackException;
+import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 import model.Veterinario;
 
@@ -22,7 +27,7 @@ public class VeterinariosBean {
     EntityManager em;
 
     @Resource
-    UserTransaction utx;
+    UserTransaction userTransaction;
 
     public VeterinariosBean() {
         veterinario = new Veterinario();
@@ -38,15 +43,15 @@ public class VeterinariosBean {
 
     public String salvar() {
         try {
-            utx.begin();
+            userTransaction.begin();
             em.persist(veterinario);
-            utx.commit();
+            userTransaction.commit();
             veterinario = new Veterinario();
-        } catch (Throwable t) {
-            t.printStackTrace();
+            veterinarios = null;
+        } catch (IllegalStateException | SecurityException | HeuristicMixedException | HeuristicRollbackException | NotSupportedException | RollbackException | SystemException t) {
             try {
-                utx.rollback();
-            } catch (Throwable t2) {
+                userTransaction.rollback();
+            } catch (IllegalStateException | SecurityException | SystemException t2) {
             }
         }
         return null;
@@ -61,8 +66,7 @@ public class VeterinariosBean {
                         Veterinario.class);
                 veterinarios = consulta.getResultList();
             } catch (Throwable t) {
-                t.printStackTrace();
-                veterinarios = new LinkedList<Veterinario>();
+                veterinarios = new LinkedList<>();
             }
         }
         return veterinarios;
@@ -70,16 +74,15 @@ public class VeterinariosBean {
 
     public void remover(Veterinario tp) {
         try {
-            utx.begin();
+            userTransaction.begin();
             tp = em.merge(tp);
             em.remove(tp);
             veterinarios.remove(tp);
-            utx.commit();
-        } catch (Throwable t) {
-            t.printStackTrace();
+            userTransaction.commit();
+        } catch (IllegalStateException | SecurityException | HeuristicMixedException | HeuristicRollbackException | NotSupportedException | RollbackException | SystemException t) {
             try {
-                utx.rollback();
-            } catch (Exception ex2) {
+                userTransaction.rollback();
+            } catch (IllegalStateException | SecurityException | SystemException ex2) {
             }
         }
     }

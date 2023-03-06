@@ -32,6 +32,16 @@ public class ClienteEJB implements ServicosCliente{
     public List<Cliente> filtrar(String filtro) {
         return cad.buscarPorNome(filtro);
     }
+
+    @Override
+    public Cliente buscar(String cpf) {
+        return cad.buscar(cpf);
+    }
+
+    @Override
+    public void alterar(Cliente cliente) {
+        cad.alterar(cliente);
+    }
     
     
 }

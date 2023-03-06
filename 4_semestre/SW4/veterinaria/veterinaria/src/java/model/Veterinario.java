@@ -12,8 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="veterinario")
-public class Veterinario implements Serializable {
+@Table(name = "veterinario")
+public class Veterinario{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,17 +21,17 @@ public class Veterinario implements Serializable {
 
     @Column
     private String nome;
-    
+
     @Column
     private String crmv;
-    
+
     @Column
     private String email;
-    
+
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="especialidade", referencedColumnName = "id")
+    @JoinColumn(name = "especialidade", referencedColumnName = "id")
     private TipoAnimal especialidade;
-    
+
     public Long getId() {
         return id;
     }
@@ -39,8 +39,6 @@ public class Veterinario implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-    
-    
 
     @Override
     public int hashCode() {
@@ -60,11 +58,6 @@ public class Veterinario implements Serializable {
             return false;
         }
         return true;
-    }
-
-    @Override
-    public String toString() {
-        return "model.Veterinario[ id=" + id + " ]";
     }
 
     public String getNome() {
@@ -98,5 +91,5 @@ public class Veterinario implements Serializable {
     public void setEspecialidade(TipoAnimal especialidade) {
         this.especialidade = especialidade;
     }
-    
+
 }

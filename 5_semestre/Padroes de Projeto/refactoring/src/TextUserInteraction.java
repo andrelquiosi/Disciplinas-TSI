@@ -13,7 +13,7 @@ public class TextUserInteraction {
             System.out.println(promptMessage);
             number = scanner.nextFloat();
 
-        } while (number > 0);
+        } while (number < 0);
 
         return number;
 

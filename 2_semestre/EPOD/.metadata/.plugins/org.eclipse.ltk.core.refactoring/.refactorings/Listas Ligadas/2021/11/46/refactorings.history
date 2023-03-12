@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename local variable &apos;elemento&apos; in &apos;listas.ListaLigada.contem(...)&apos; to &apos;elementoTeste&apos;&#x0D;&#x0A;- Original project: &apos;Listas Ligadas&apos;&#x0D;&#x0A;- Original element: &apos;listas.ListaLigada.contem(T).elemento&apos;&#x0D;&#x0A;- Renamed element: &apos;elemento&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;elemento&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;listas{ListaLigada.java[ListaLigada~contem~QT;@elemento!1003!1012!1005!1012!QT;!0!true" name="elementoTeste" references="true" stamp="1636566127813" version="1.0"/>
-</session>

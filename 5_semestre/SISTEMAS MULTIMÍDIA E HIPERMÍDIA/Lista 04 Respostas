@@ -1,0 +1,39 @@
+1. Converta um arquivo de vídeo MP4 para o formato AVI.
+
+    ffmpeg -i coffee.mp4 coffee.avi
+
+2. Extraia o áudio de um arquivo de vídeo e salve como um arquivo MP3.
+    
+    ffmpeg -i coffee.mp4 -vn audioCoffee.mp3
+
+3. Corte um trecho específico de um vídeo.
+
+    ffmpeg -i coffee.mp4 -ss 00:00:07 -t 00:00:13 -c:v copy -c:a copy coffee1.mp4
+
+
+4. Adicione legendas em um arquivo de vídeo. Crie um arquivo de texto com extensão .srt.
+Busque informações sobre este formato.
+
+    ffmpeg -i coffee.mp4 -vf subtitles=legenda.srt coffe_srt.mp4
+
+5. Corte um trecho especifico de um vídeo mantendo sua legenda.
+
+    ffmpeg -ss 00:00:07 -t 00:00:13 -copyts -i coffe_srt.mp4 -vf subtitles=legenda.srt  -c:a copy -ss 00:00:13 -y final.mp4
+
+
+6. Redimensione um vídeo para uma resolução menor.
+
+    ffmpeg -i coffee.mp4 -vf scale=640:480 coffe640_480.mp4
+
+7. Converta um arquivo de áudio FLAC para o formato MP3.
+
+    ffmpeg -i audio.flac audio.mp3
+
+8. Extraia uma imagem de um arquivo de vídeo em um determinado tempo.
+
+    ffmpeg -ss 00:00:04 -i coffe_srt.mp4 -frames:v 1 coffee.png
+
+9. Remova o áudio de um arquivo de vídeo.
+
+    ffmpeg -i coffee.mp4 -an coffee_sem_audio.mp4
+

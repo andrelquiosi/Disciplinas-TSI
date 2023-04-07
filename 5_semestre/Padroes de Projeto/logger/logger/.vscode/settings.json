@@ -1,0 +1,9 @@
+{
+    "java.project.sourcePaths": [
+        "codeSmell_SOLID.logger"
+    ],
+    "java.project.outputPath": "bin",
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar"
+    ]
+}

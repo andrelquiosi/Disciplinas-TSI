@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/textoCategoria"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5sp"
+            android:layout_weight="1"
+            android:text="@string/categoria"
+            android:textColor="#FF0000"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/nomeCategoria"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:inputType="text"
+            tools:ignore="LabelFor" />
+
+        <Button
+            android:layout_width="80sp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5sp"
+            android:layout_weight="1"
+            android:layout_gravity="center_horizontal"
+            android:onClick="adicionarCategoria"
+            android:backgroundTint="@color/teal_700"
+
+            android:text="@string/ok" />
+
+    </LinearLayout>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_weight="1">
+    <ListView
+        android:id="@+id/lista_categorias"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+</LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".MainActivity">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Iniciar / Continuar!"
+        android:onClick="gerar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mais rápido..."
+            android:onClick="acelerar"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mais devagar..."
+            android:layout_marginLeft="5sp"
+            android:onClick="desacelerar"/>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pausar"
+        android:onClick="pausar"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0sp"
+        android:layout_weight="10"
+        android:id="@+id/edNumero"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:textSize="32sp"/>
+</LinearLayout>

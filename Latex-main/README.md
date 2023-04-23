@@ -1,2 +1,0 @@
-# Latex
-Modelos em latex.

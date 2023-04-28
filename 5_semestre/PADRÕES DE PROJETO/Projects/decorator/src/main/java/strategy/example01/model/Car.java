@@ -1,6 +1,6 @@
 package strategy.example01.model;
 
-public class Car
+public class Car 
 {
 	private String licence;
 	private String name;

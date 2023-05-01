@@ -40,24 +40,61 @@ public class AppCar {
 		listCar.stream().forEach(System.out::println);
 	}
 	// -------------------------------------------------------------------------------------
-	private class OrderedByYear implements Comparator<Car> {
+	// private class OrderedByYear implements Comparator<Car> {
 
-		@Override
-		public int compare(Car carA, Car carB) {
-			return carA.getYear() - carB.getYear();
-		}
+	// @Override
+	// public int compare(Car carA, Car carB) {
+	// return carA.getYear() - carB.getYear();
+	// }
+
+	// }
+
+	// private int orderedByYear(Car carA, Car carB){
+	// return carA.getYear() - carB.getYear();
+	// }
+
+	// -------------------------------------------------------------------------------------
+	public void printAllCarsOrderedByYear() {
+
+		// Stream<Car> stream = carStock.stream();
+		// stream.sorted(this::orderedByYear).forEach(System.out::println);
+		carStock.stream().sorted((carA, carB) -> (carA.getYear() - carB.getYear()))
+				.forEach(car -> System.out.println(car));
+	}
+
+	// -------------------------------------------------------------------------------------
+
+	public void printAllCarsOrderedByLicense() {
+
+		carStock.stream().sorted((carA, carB) -> carA.getLicence()
+				.compareToIgnoreCase(carB.getLicence()))
+				.forEach(car -> System.out.println(car));
+	}
+
+	// -------------------------------------------------------------------------------------
+
+	public void printAllCarsOrderedByBrand() {
+
+		carStock.stream().sorted((carA, carB) -> carA.getBrand()
+				.compareTo(carB.getBrand()))
+				.forEach(car -> System.out.println(car));
+	}
+
+	// -------------------------------------------------------------------------------------
+
+	private int orderedByBrandAndByYear(Car carA, Car carB){
+		
+	}
+
+	// -------------------------------------------------------------------------------------
+
+	public void printAllCarsOrderedByBrandAndYear(){
+			carStock.stream().sorted((carA, carB) -> carA.getBrand().compareTo(carB.getBrand()) || carA.getYear() - carB.getYear())
+			.forEach(car ->System.out.println(car));
 
 	}
 
 	// -------------------------------------------------------------------------------------
-void printAllCarsOrderedByYear(){
-
-	Stream<Car> stream = carStock.stream();
-	stream.sorted(new OrderedByYear()).forEach(System.out::println);
-}
-
-	// -------------------------------------------------------------------------------------
-
 
 	public static void main(String[] args) throws IOException {
 		String path = System.getProperty("user.dir");
@@ -68,7 +105,9 @@ void printAllCarsOrderedByYear(){
 
 		AppCar app = new AppCar(carStock);
 		// app.printAllCars();
-		app.printAllCarsOrderedByYear();
+		// app.printAllCarsOrderedByYear();
+		// app.printAllCarsOrderedByLicense();
+		// app.printAllCarsOrderedByBrand();
 
 	}
 

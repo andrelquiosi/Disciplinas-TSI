@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.edu.utfpr.td.tsi.webservice.controle.persistencia.PessoaDAO;
-import br.edu.utfpr.td.tsi.webservice.controle.persistencia.PessoaDAOEmMemoria;
 import br.edu.utfpr.td.tsi.webservice.modelo.Pessoa;
 
 @Component

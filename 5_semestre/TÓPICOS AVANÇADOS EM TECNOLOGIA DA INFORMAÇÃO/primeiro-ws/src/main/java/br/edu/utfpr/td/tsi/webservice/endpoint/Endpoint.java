@@ -33,7 +33,7 @@ public class Endpoint {
 	}
         
         @GET
-        @Path("Vatiaveis")
+        @Path("Variaveis")
         public Response lerVariaveis(String x, String Y){
 
             return Response.ok().build();

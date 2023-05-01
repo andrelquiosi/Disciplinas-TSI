@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 
 import br.edu.utfpr.td.tsi.webservice.modelo.Pessoa;
 import br.edu.utfpr.td.tsi.webservice.regras.RegrasPessoa;
-import br.edu.utfpr.td.tsi.webservice.regras.RegrasPessoaPR;
 
 @Component
 public class ControlePessoa {

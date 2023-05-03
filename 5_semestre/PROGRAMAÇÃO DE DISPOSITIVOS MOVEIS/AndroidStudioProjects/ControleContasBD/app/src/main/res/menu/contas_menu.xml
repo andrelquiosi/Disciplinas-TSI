@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/mi_adicionar"
+        android:title="Editar"
+        android:icon="@drawable/ic_editar"
+        android:onClick="editar"
+        app:showAsAction="always"/>
+    <item android:id="@+id/mi_remover"
+        android:title="Excluir"
+        android:icon="@drawable/ic_excluir"
+        app:showAsAction="always"
+        android:onClick="excluir"/>
+    <item android:id="@+id/mi_voltar"
+        android:title="Sair"
+        android:icon="@drawable/ic_sair"
+        android:onClick="voltar"
+        app:showAsAction="ifRoom"/>
+</menu>

@@ -1,4 +1,4 @@
-package com.example.clienterest.model;
+package com.example.appclienterest_trabalho2.model;
 
 import java.util.Objects;
 

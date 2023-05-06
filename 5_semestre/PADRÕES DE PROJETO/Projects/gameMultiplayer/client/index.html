@@ -1,0 +1,71 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Meu Joguinho MultiPlayer</title>
+</head>
+
+<body>
+    <style>
+        #screen {
+            border: 10px solid #CCC;
+        }
+    </style>
+
+
+    <canvas id="screen" width="500" height="500"></canvas>
+
+    <script>
+
+
+        const game = {
+            players: {
+                payer1: {
+                    x: 1,
+                    y: 2,
+                    color: 'blue'
+                },
+                player2: {
+                    x: 90,
+                    y: 80,
+                    color: 'yellow'
+
+                }
+            },
+            fruits: {
+                fruit1: {
+                    x: 50,
+                    y: 50,
+                    color: 'red'
+                }
+            }
+        }
+        
+        
+        function renderScreen() {
+            const screen = document.getElementById('screen');
+            const context = screen.getContext('2d');
+            
+            for (const playerId in game.players) {
+
+                const player = game.players[playerId];
+                context.fillStyle = player.color;
+                context.fillRect(player.x, player.y, 10, 10);
+                
+            }
+            for (const fruitId in game.fruits) {
+                
+                const fruit = game.fruits[fruitId];
+                context.fillStyle = fruit.color;
+                context.fillRect(fruit.x, fruit.y, 10, 10);
+            }
+            
+        }
+        renderScreen();
+
+
+
+    </script>
+</body>
+
+</html>

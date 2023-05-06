@@ -19,7 +19,7 @@ public class SimpleMotorStateTest {
     @Test
     void shouldReturnCorrectClone() {
 
-        MotorState state = new SimpleMotorState(
+        MotorState state = new SimpleMotorStateImutable(
 
                 MotorState.Status.ON,
                 1100f,

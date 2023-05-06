@@ -1,12 +1,12 @@
 package designPatern.builder.observer.motor;
 
-public class SimpleMotorState implements MotorState {
+public class SimpleMotorStateImutable implements MotorState {
 
     Status currentStatus = Status.OFF;
-    float rpm = 0.0f;
-    float accelerationFraction = 0.0f;
+    private float rpm = 0.0f;
+    private float accelerationFraction = 0.0f;
 
-    public SimpleMotorState(
+    public SimpleMotorStateImutable(
             Status currenStatus,
             float rpm,
             float accelerationFraction) {
@@ -17,21 +17,8 @@ public class SimpleMotorState implements MotorState {
         this.accelerationFraction = accelerationFraction;
 
     }
-    
-    public SimpleMotorState() {
-    }
 
-
-    public void setCurrentStatus(Status currentStatus) {
-        this.currentStatus = currentStatus;
-    }
-
-    public void setRpm(float rpm) {
-        this.rpm = rpm;
-    }
-
-    public void setAccelerationFraction(float accelerationFraction) {
-        this.accelerationFraction = accelerationFraction;
+    public SimpleMotorStateImutable() {
     }
 
     @Override

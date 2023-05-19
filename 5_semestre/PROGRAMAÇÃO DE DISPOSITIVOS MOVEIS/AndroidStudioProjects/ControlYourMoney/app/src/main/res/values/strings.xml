@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Controle Seu Dinheiro</string>
+    <string name="category_name">Nome da Categoria</string>
+    <string name="expense">Despesa</string>
+    <string name="payday">Data de Vencimento</string>
+    <string name="value_to_pay">Valor a Pagar</string>
+    <string name="description">Descrição</string>
+    <string name="save">Salvar</string>
+</resources>

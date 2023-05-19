@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Control Your Money</string>
+    <string name="category_name">Category Name</string>
+    <string name="expense">Expense</string>
+    <string name="payday">Payday</string>
+    <string name="value_to_pay">Cost</string>
+    <string name="description">Description</string>
+    <string name="save">Save</string>
+</resources>

@@ -1,0 +1,40 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/textViewCpfCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CPF Cliente"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textViewData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Data" />
+
+    <TextView
+        android:id="@+id/textViewIdVendedor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ID Vendedor" />
+
+    <TextView
+        android:id="@+id/textViewItens"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Itens" />
+
+
+    <TextView
+        android:id="@+id/textViewPercentualDesconto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Percentual de Desconto" />
+
+</LinearLayout>

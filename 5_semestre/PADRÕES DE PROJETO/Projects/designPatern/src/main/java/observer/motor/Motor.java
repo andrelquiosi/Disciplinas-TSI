@@ -1,4 +1,4 @@
-package observer.motor;
+package  observer.motor;
 
 public interface Motor
 {	
@@ -13,3 +13,4 @@ public interface Motor
 	public void start();
 	public void stop();
 }
+

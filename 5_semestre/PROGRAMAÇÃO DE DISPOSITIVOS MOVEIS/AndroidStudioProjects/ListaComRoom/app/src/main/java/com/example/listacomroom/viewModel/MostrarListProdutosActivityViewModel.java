@@ -10,12 +10,12 @@ import com.example.listacomroom.modelo.Produto;
 
 import java.util.List;
 
-public class ShowItemListActivityViewModel extends AndroidViewModel {
+public class MostrarListProdutosActivityViewModel extends AndroidViewModel {
 
-    private MutableLiveData<List<Produto>> listOfProduto;
-    private Banco appDatabase;
+    private final MutableLiveData<List<Produto>> listOfProduto;
+    private final Banco appDatabase;
 
-    public ShowItemListActivityViewModel(Application application) {
+    public MostrarListProdutosActivityViewModel(Application application) {
         super(application);
         listOfProduto = new MutableLiveData<>();
 
@@ -27,7 +27,7 @@ public class ShowItemListActivityViewModel extends AndroidViewModel {
     }
 
     public void getAllProdutoList(long id) {
-        List<Produto> itemsList= (List<Produto>) appDatabase.getProdutoDAO().buscarPorDepartamento(id);
+        List<Produto> itemsList= appDatabase.getProdutoDAO().buscarPorDepartamento(id);
         if(itemsList.size() > 0)
         {
             listOfProduto.postValue(itemsList);

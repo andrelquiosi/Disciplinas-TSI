@@ -4,22 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".CadProdutos">
 
-    <TextView
-        android:id="@+id/txt_depto"
+    <ImageView
+        android:id="@+id/SalvarButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:text="Nome da Lista"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/setores"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="230dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="6dp"
+        android:paddingBottom="10dp"
+        android:src="@drawable/ic_send"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewProdutos"
+        app:layout_constraintEnd_toEndOf="@+id/ed_qtde"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
@@ -31,9 +29,7 @@
         android:layout_marginTop="62dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="176dp"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/lista_prods"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,26 +67,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ed_produto" />
 
-    <Button
-        android:id="@+id/button3"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewProdutos"
+        android:layout_width="409dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SalvarButton" />
+
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:onClick="confirmar"
-        android:text="Confirmar"
-        app:layout_constraintBottom_toTopOf="@+id/lista_prods"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ed_qtde" />
+        android:text="Setor"
+        app:layout_constraintBottom_toTopOf="@+id/setores"
+        app:layout_constraintStart_toStartOf="@+id/setores" />
 
-    <ListView
-        android:id="@+id/lista_prods"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="4dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/setores" />
 </androidx.constraintlayout.widget.ConstraintLayout>

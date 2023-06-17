@@ -10,18 +10,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.shoppinglist.db.Category;
 import com.example.listacomroom.modelo.ListaDeCompras;
 
 import java.util.List;
 
-public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapter.MyViewHolder> {
+public class ListaDeComprasAdapter extends RecyclerView.Adapter<ListaDeComprasAdapter.MyViewHolder> {
 
     private Context context;
     private List<ListaDeCompras> listaDeCompras;
-    private HandleCategoryClick clickListener;
+    private HandleListaClick clickListener;
 
-    public CategoryListAdapter(Context context, HandleCategoryClick clickListener) {
+    public ListaDeComprasAdapter(Context context, HandleListaClick clickListener) {
         this.context = context;
         this.clickListener = clickListener;
     }
@@ -52,7 +51,7 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
         holder.editarLista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clickListener.editItem(listaDeCompras.get(position));
+                clickListener.editaItem(listaDeCompras.get(position));
             }
         });
 
@@ -66,7 +65,7 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
 
     @Override
     public int getItemCount() {
-        if(listaDeCompras == null || listaDeCompras.size() == 0)
+        if (listaDeCompras == null || listaDeCompras.size() == 0)
             return 0;
         else
             return listaDeCompras.size();
@@ -79,16 +78,18 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
 
         public MyViewHolder(View view) {
             super(view);
-            tvNomeLista = view.findViewById(R.id.tvCategoryName);
-            removeLista = view.findViewById(R.id.removeCategory);
-            editarLista = view.findViewById(R.id.editCategory);
+            tvNomeLista = view.findViewById(R.id.tvName);
+            removeLista = view.findViewById(R.id.remove);
+            editarLista = view.findViewById(R.id.edit);
 
         }
     }
 
-    public interface  HandleCategoryClick {
-        void itemClick(ListaDeCompras category);
-        void removeItem(ListaDeCompras category);
-        void editItem(ListaDeCompras category);
+    public interface HandleListaClick {
+        void itemClick(ListaDeCompras listaDeCompras);
+
+        void removeItem(ListaDeCompras listaDeCompras);
+
+        void editaItem(ListaDeCompras listaDeCompras);
     }
 }

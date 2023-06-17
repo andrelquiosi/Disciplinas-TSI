@@ -1,98 +1,145 @@
 package com.example.listacomroom;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
-import androidx.room.Room;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.os.Looper;
+import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.AbsListView;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.ImageView;
+import android.widget.Toast;
 
-import com.example.listacomroom.banco.Banco;
-import com.example.listacomroom.banco.SetorDAO;
-import com.example.listacomroom.banco.ProdutoDAO;
-import com.example.listacomroom.modelo.ListaComProdutos;
-import com.example.listacomroom.modelo.Setor;
 import com.example.listacomroom.modelo.Produto;
+import com.example.listacomroom.modelo.Setor;
+import com.example.listacomroom.viewModel.MostrarListProdutosActivityViewModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class CadProdutos extends AppCompatActivity implements
-        AdapterView.OnItemLongClickListener {
+public class CadProdutos extends AppCompatActivity implements ListaProdutosAdapter.HandleProdutosClick
+{
 
+    private long lista_id;
+    private ListaProdutosAdapter listaProdutosAdapter;
+    private MostrarListProdutosActivityViewModel viewModelProdutos;
+    private RecyclerView recyclerView;
+    private Produto atualizaProduto = null;
     Setor depto;
-    SetorDAO deptoDAO;
-    ProdutoDAO produtoDAO;
-    Banco bd;
-    ListaComProdutos deptoProds;
-    ArrayAdapter adapter;
-    List<Produto> produtos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cad_produtos);
-        long idDepto = getIntent().getLongExtra("idDepto", 0);
-        bd = Room.databaseBuilder( getApplicationContext(), Banco.class,
-                "lista_compras").build();
-        deptoDAO = bd.getSetorDAO();
-        produtoDAO = bd.getProdutoDAO();
-        deptoDAO.buscarPorId( (int) idDepto ).observeForever( new Atualizador() );
+        recyclerView = findViewById(R.id.recyclerViewProdutos);
 
-        produtos = new ArrayList<>();
-        adapter = new ArrayAdapter(getApplicationContext(),
-                android.R.layout.simple_list_item_single_choice,
-                produtos);
-        ListView lv = ((ListView) findViewById(R.id.lista_prods));
-        lv.setAdapter(adapter);
-        lv.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
-        lv.setOnItemLongClickListener(this);
-    }
+        lista_id = getIntent().getLongExtra("lista_id", 0);
+        String listaNome = getIntent().getStringExtra("lista_nome");
 
-    public void confirmar(View v) {
-        String prod = ((EditText) findViewById(R.id.ed_produto)).getText().toString();
-        double qtde = Double.parseDouble(
-                ((EditText) findViewById(R.id.ed_qtde)).getText().toString());
-        new Thread() {
-            public void run() {
-                Looper.prepare();
-                Produto p = new Produto(prod, qtde, deptoProds.getListaDeCompras().getIdProduto(),1);
-                produtoDAO.inserir(p);
-                Looper.loop();
+        getSupportActionBar().setTitle(listaNome);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        ImageView salvarButton = findViewById(R.id.SalvarButton);
+        salvarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String prod = ((EditText) findViewById(R.id.ed_produto)).getText().toString();
+                double qtde;
+                if(TextUtils.isEmpty(prod)) {
+                    Toast.makeText(CadProdutos.this, "Informe o nome", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(TextUtils.isEmpty(((EditText) findViewById(R.id.ed_qtde)).getText().toString())) {
+                    Toast.makeText(CadProdutos.this, "Informe a quantidade", Toast.LENGTH_SHORT).show();
+                    return;
+                }else {
+                    qtde = Double.parseDouble(
+                            ((EditText) findViewById(R.id.ed_qtde)).getText().toString());
+                }
+                if(atualizaProduto == null)
+                    salvarNovoProduto(prod, qtde);
+                else
+                    atualizarNovoProduto(prod, qtde);
             }
-        }.start();
+        });
+        initViewModel();
+        initRecyclerView();
+        viewModelProdutos.getAllProdutoList(lista_id);
+    }
+    private void initViewModel() {
+        viewModelProdutos = new ViewModelProvider(this).get(MostrarListProdutosActivityViewModel.class);
+        viewModelProdutos.getProdutoListObserver().observe(this, new Observer<List<Produto>>() {
+            @Override
+            public void onChanged(List<Produto> produtos) {
+                if(produtos == null) {
+                    recyclerView.setVisibility(View.GONE);
+                } else {
+                    listaProdutosAdapter.setCategoryList(produtos);
+                    recyclerView.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+    }
+    private void initRecyclerView() {
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        listaProdutosAdapter = new ListaProdutosAdapter(this, this);
+        recyclerView.setAdapter(listaProdutosAdapter);
+    }
+    private void salvarNovoProduto(String prod, double qtde) {
+        Produto produto = new Produto();
+        Setor setor = new Setor("bebidas");
+        produto.setDescricao(prod);
+        produto.setQuantidade(qtde);
+        produto.setIdLista(lista_id);
+        produto.setIdSetor(setor.getIdSetor());
+        viewModelProdutos.inserirProdutos(produto);
+        ((EditText) findViewById(R.id.ed_produto)).setText("");
+        ((EditText) findViewById(R.id.ed_qtde)).setText("");
+    }
+    private void atualizarNovoProduto(String prod, double qtde) {
+
+        atualizaProduto.setDescricao(prod);
+        atualizaProduto.setQuantidade(qtde);
+
+        viewModelProdutos.atualizarProdutos(atualizaProduto);
+        ((EditText) findViewById(R.id.ed_produto)).setText("");
+        ((EditText) findViewById(R.id.ed_qtde)).setText("");
+        atualizaProduto = null;
     }
 
     @Override
-    public boolean onItemLongClick(AdapterView<?> adapterView,
-                                   View view, int i, long l) {
-        Produto p = produtos.get(i);
-        p.setComprado( ! p.isComprado() );
-        new Thread() {
-            public void run() {
-                Looper.prepare();
-                produtoDAO.atualizar( p );
-                Looper.loop();
-            }
-        }.start();
-        return true;
+    public void produtoClick(Produto produto) {
+        if(produto.isComprado()) {
+            produto.setComprado(false);
+        }
+        else {
+            produto.setComprado(true);
+        }
+        viewModelProdutos.atualizarProdutos(produto);
     }
 
-    class Atualizador implements Observer<ListaComProdutos> {
-        @Override
-        public void onChanged(ListaComProdutos listaComProdutos) {
-            ((TextView) findViewById(R.id.txt_depto)).setText(
-                    listaComProdutos.getListaDeCompras().getDescricao() );
-            deptoProds = listaComProdutos;
-            produtos.clear();
-            produtos.addAll( listaComProdutos.getProdutos() );
-            adapter.notifyDataSetChanged();
+    @Override
+    public void removeProduto(Produto produto) {
+        viewModelProdutos.deleteProduto(produto);
+    }
+
+    @Override
+    public void editarProduto(Produto produto) {
+        this.atualizaProduto = produto;
+        ((EditText) findViewById(R.id.ed_produto)).setText(produto.getDescricao());
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
         }
+        return super.onOptionsItemSelected(item);
     }
 }

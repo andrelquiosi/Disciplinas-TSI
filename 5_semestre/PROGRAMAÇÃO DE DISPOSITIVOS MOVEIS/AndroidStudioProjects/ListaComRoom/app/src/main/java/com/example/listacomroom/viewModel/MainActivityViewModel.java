@@ -1,56 +1,56 @@
-package com.android.shoppinglist.viewmodel;
+package com.example.listacomroom.viewModel;
 
 import android.app.Application;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
-import com.android.shoppinglist.db.AppDatabase;
-import com.android.shoppinglist.db.Category;
+
+import com.example.listacomroom.banco.Banco;
+import com.example.listacomroom.modelo.ListaDeCompras;
 
 import java.util.List;
 
 public class MainActivityViewModel extends AndroidViewModel {
 
-    private MutableLiveData<List<Category>> listOfCategory;
-    private AppDatabase appDatabase;
+    private MutableLiveData<List<ListaDeCompras>> listaDeCompras;
+    private Banco banco;
 
     public MainActivityViewModel(Application application) {
         super(application);
-        listOfCategory = new MutableLiveData<>();
+        listaDeCompras = new MutableLiveData<>();
 
-        appDatabase = AppDatabase.getDBinstance(getApplication().getApplicationContext());
+        banco = Banco.getBancoInstance(getApplication().getApplicationContext());
     }
 
-    public MutableLiveData<List<Category>>  getCategoryListObserver() {
-        return listOfCategory;
+    public MutableLiveData<List<ListaDeCompras>> getListaObserver() {
+        return listaDeCompras;
     }
 
-    public void getAllCategoryList() {
-        List<Category> categoryList=  appDatabase.shoppingListDao().getAllCategoriesList();
-        if(categoryList.size() > 0)
-        {
-            listOfCategory.postValue(categoryList);
-        }else {
-            listOfCategory.postValue(null);
+    public void getAllListaDeCompras() {
+        List<ListaDeCompras> lista = banco.getListaDeComprasDAO().buscarTodos();
+        if (lista.size() > 0) {
+            listaDeCompras.postValue(lista);
+        } else {
+            listaDeCompras.postValue(null);
         }
     }
 
-    public void insertCategory(String catName) {
-        Category category = new Category();
-        category.categoryName = catName;
-        appDatabase.shoppingListDao().insertCategory(category);
-        getAllCategoryList();
+    public void insertListaDeCompras(String descricao) {
+        ListaDeCompras lista = new ListaDeCompras();
+        lista.setDescricao(descricao);
+        banco.getListaDeComprasDAO().inserir(lista);
+        getAllListaDeCompras();
     }
 
-    public void updateCategory(Category category) {
-        appDatabase.shoppingListDao().updateCategory(category);
-        getAllCategoryList();
+    public void updateListaDeCompras(ListaDeCompras lista) {
+        banco.getListaDeComprasDAO().atualizar(lista);
+        getAllListaDeCompras();
     }
 
-    public void deleteCategory(Category category) {
-        appDatabase.shoppingListDao().deleteCategory(category);
-        getAllCategoryList();
+    public void deleteListaDeCompras(ListaDeCompras lista) {
+        banco.getListaDeComprasDAO().remover(lista);
+        getAllListaDeCompras();
     }
 
 }

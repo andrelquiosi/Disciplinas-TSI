@@ -23,7 +23,10 @@ public interface ProdutoDAO {
     @Update
     public void atualizar(Produto produto);
 
-    @Query("select * from produto where idSetor = :idSetor & idLista = :idLista")
-    LiveData<List<Produto>> buscarPorDepartamento(long idSetor, long idLista);
+    @Query("select * from produto")
+    LiveData<List<Produto>> buscarTodos();
+
+    @Query("select * from produto where idLista = :idLista")
+    List<Produto> buscarPorDepartamento(long idLista);
 
 }

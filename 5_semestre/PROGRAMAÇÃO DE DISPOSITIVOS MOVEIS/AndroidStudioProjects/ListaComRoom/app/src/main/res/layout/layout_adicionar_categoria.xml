@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="Informe o nome da Lista"
+        android:text="Informe a descrição"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,11 +19,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/enterCategoryInput"
+        android:id="@+id/enterDescricao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:hint="Nome da Lista"
+        android:hint="Descrição"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +31,7 @@
 
 
     <TextView
-        android:id="@+id/cancelButton"
+        android:id="@+id/cancelarButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -39,10 +39,10 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enterCategoryInput" />
+        app:layout_constraintTop_toBottomOf="@+id/enterDescricao" />
 
     <TextView
-        android:id="@+id/createButton"
+        android:id="@+id/criarButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -50,7 +50,7 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enterCategoryInput" />
+        app:layout_constraintTop_toBottomOf="@+id/enterDescricao" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

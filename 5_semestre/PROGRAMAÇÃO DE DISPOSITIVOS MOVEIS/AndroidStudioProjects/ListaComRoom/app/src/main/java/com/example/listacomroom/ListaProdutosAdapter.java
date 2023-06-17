@@ -15,13 +15,13 @@ import com.example.listacomroom.modelo.Produto;
 
 import java.util.List;
 
-public class ProdutosListAdapter extends RecyclerView.Adapter<ProdutosListAdapter.MyViewHolder> {
+public class ListaProdutosAdapter extends RecyclerView.Adapter<ListaProdutosAdapter.MyViewHolder> {
 
     private Context context;
     private List<Produto> itemsList;
     private HandleProdutosClick clickListener;
 
-    public ProdutosListAdapter(Context context, HandleProdutosClick clickListener) {
+    public ListaProdutosAdapter(Context context, HandleProdutosClick clickListener) {
         this.context = context;
         this.clickListener = clickListener;
     }

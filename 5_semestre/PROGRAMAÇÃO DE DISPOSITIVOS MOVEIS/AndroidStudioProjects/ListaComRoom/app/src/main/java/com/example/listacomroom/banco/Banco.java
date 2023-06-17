@@ -1,5 +1,7 @@
 package com.example.listacomroom.banco;
 
+import android.content.Context;
+
 import androidx.room.*;
 
 import com.example.listacomroom.modelo.ListaDeCompras;
@@ -12,14 +14,16 @@ public abstract class Banco extends RoomDatabase {
 
     private static Banco instance;
 
-    public static void setInstance(Banco newInstance) {
-        instance = newInstance;
-    }
+    public static Banco getBancoInstance(Context context) {
+        if(instance == null ) {
+            instance = Room.databaseBuilder(context.getApplicationContext(), Banco.class, "AppDB")
+                    .allowMainThreadQueries()
+                    .build();
 
-    public static Banco getInstance() {
+        }
+
         return instance;
     }
-
     public abstract SetorDAO getSetorDAO();
 
     public abstract ProdutoDAO getProdutoDAO();

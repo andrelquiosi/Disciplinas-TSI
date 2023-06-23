@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity
 
         getSupportActionBar().setTitle("Lista de compras");
 
-        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.recyclerViewLista);
         ImageView addNew = findViewById(R.id.addNewCategoryImageView);
         addNew.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v) {
                 String nome = enterDescricao.getText().toString();
                 if (TextUtils.isEmpty(nome)) {
-                    Toast.makeText(MainActivity.this, "Enter lista name", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Informe o nome da lista", Toast.LENGTH_SHORT).show();
                     return;
                 }
 

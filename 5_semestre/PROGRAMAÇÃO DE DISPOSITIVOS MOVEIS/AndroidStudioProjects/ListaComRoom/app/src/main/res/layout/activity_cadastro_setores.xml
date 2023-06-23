@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CadastroSetores">
+    tools:context=".view.CadastroSetores">
 
     <ImageView
-        android:id="@+id/addNewCategoryImageView3"
+        android:id="@+id/addNewSetorImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
@@ -17,7 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView2"
+        android:id="@+id/recyclerViewSetor"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="1dp"

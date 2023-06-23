@@ -1,4 +1,4 @@
-package com.example.listacomroom;
+package com.example.listacomroom.adapter;
 
 import android.content.Context;
 import android.graphics.Paint;
@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.listacomroom.R;
 import com.example.listacomroom.modelo.Produto;
 
 import java.util.List;

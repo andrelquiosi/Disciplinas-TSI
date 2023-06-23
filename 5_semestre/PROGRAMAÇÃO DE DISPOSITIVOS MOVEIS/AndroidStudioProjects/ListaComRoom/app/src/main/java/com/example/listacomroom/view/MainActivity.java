@@ -1,4 +1,4 @@
-package com.example.listacomroom;
+package com.example.listacomroom.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.listacomroom.R;
+import com.example.listacomroom.adapter.ListaDeComprasAdapter;
 import com.example.listacomroom.modelo.ListaDeCompras;
 import com.example.listacomroom.viewModel.MainActivityViewModel;
 

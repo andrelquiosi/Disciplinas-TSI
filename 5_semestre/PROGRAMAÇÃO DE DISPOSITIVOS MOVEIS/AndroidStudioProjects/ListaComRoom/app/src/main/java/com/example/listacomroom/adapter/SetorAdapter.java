@@ -1,4 +1,4 @@
-package com.example.listacomroom;
+package com.example.listacomroom.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.listacomroom.R;
 import com.example.listacomroom.modelo.Setor;
 
 import java.util.List;
@@ -62,6 +63,7 @@ public class SetorAdapter extends RecyclerView.Adapter<SetorAdapter.MyViewHolder
         else
             return setorList.size();
     }
+
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView tvNomeLista;

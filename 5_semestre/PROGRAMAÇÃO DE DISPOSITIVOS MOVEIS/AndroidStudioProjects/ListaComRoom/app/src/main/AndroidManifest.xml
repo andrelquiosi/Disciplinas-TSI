@@ -9,11 +9,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ListaComRoom">
         <activity
-            android:name=".CadastroSetores"
+            android:name=".view.CadastroSetores"
             android:exported="false" />
-        <activity android:name=".CadProdutos" />
+        <activity android:name=".view.CadProdutos" />
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

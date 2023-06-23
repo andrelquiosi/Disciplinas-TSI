@@ -4,5 +4,6 @@
 
     <item
         android:title="Setores"
+        android:id="@+id/itemMenuSetor"
         app:showAsAction="ifRoom" />
 </menu>

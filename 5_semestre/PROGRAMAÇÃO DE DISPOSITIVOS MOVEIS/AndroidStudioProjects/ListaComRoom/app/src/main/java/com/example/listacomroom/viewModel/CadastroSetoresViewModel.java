@@ -6,50 +6,50 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.listacomroom.banco.Banco;
-import com.example.listacomroom.modelo.ListaDeCompras;
+import com.example.listacomroom.modelo.Setor;
 
 import java.util.List;
 
 public class CadastroSetoresViewModel extends AndroidViewModel {
 
-    private MutableLiveData<List<ListaDeCompras>> listaDeCompras;
-    private Banco banco;
+    private final MutableLiveData<List<Setor>> setores;
+    private final Banco banco;
 
     public CadastroSetoresViewModel(Application application) {
         super(application);
-        listaDeCompras = new MutableLiveData<>();
+        setores = new MutableLiveData<>();
 
         banco = Banco.getBancoInstance(getApplication().getApplicationContext());
     }
 
-    public MutableLiveData<List<ListaDeCompras>> getListaObserver() {
-        return listaDeCompras;
+    public MutableLiveData<List<Setor>> getListaObserver() {
+        return setores;
     }
 
-    public void getAllListaDeCompras() {
-        List<ListaDeCompras> lista = banco.getListaDeComprasDAO().buscarTodos();
-        if (lista.size() > 0) {
-            listaDeCompras.postValue(lista);
+    public void getAllSetor() {
+        List<Setor> setorList = banco.getSetorDAO().buscarTodos();
+        if (setorList.size() > 0) {
+            setores.postValue(setorList);
         } else {
-            listaDeCompras.postValue(null);
+            setores.postValue(null);
         }
     }
 
-    public void insertListaDeCompras(String descricao) {
-        ListaDeCompras lista = new ListaDeCompras();
-        lista.setDescricao(descricao);
-        banco.getListaDeComprasDAO().inserir(lista);
-        getAllListaDeCompras();
+    public void insertSetor(String descricao) {
+        Setor setor = new Setor();
+        setor.setDescricao(descricao);
+        banco.getSetorDAO().inserir(setor);
+        getAllSetor();
     }
 
-    public void updateListaDeCompras(ListaDeCompras lista) {
-        banco.getListaDeComprasDAO().atualizar(lista);
-        getAllListaDeCompras();
+    public void updateSetor(Setor setor) {
+        banco.getSetorDAO().alterar(setor);
+        getAllSetor();
     }
 
-    public void deleteListaDeCompras(ListaDeCompras lista) {
-        banco.getListaDeComprasDAO().remover(lista);
-        getAllListaDeCompras();
+    public void deleteSetor(Setor setor) {
+        banco.getSetorDAO().remover(setor);
+        getAllSetor();
     }
 
 }

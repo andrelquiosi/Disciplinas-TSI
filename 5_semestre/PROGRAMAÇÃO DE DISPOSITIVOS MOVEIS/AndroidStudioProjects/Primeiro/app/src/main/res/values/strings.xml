@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">Primeiro</string>
-    <string name="somar">Somar</string>
-    <string name="remover">Remover</string>
-    <string name="informe_um_valor_inteiro">Informe um valor inteiro</string>
-</resources>

@@ -1,0 +1,34 @@
+Objetivo geral:
+- Preparação, tratamento e visualização de dados meteorológicos para criação de mapas temáticos
+
+Objetivos específicos:
+- i) Coleta de dados meteorológicos a partir de repositórios oficiais
+- ii) Tratamento de dados...
+- iii) Caracterizar de dados...
+- iv) Visualização de dados...
+   v) Analisar a eficiência e uso das linguagens Python e R para as tarefas anteriores...
+
+Referencial teórica:
+
+
+
+Algumas etapas para a preparação, tratamento e visualização de dados meteorológicos para criação de mapas temáticos são:
+
+- Coletar dados atmosféricos de estações meteorológicas, satélites e radares
+- Processar e integrar os dados em modelos numéricos de previsão
+- Simular o comportamento do tempo em diferentes cenários e intervalos de tempo
+- Analisar os dados com ferramentas estatísticas e espaciais
+- Aplicar técnicas de georreferenciamento e cartografia
+- Criar mapas temáticos com cores, símbolos e legendas adequados
+- Compartilhar e divulgar os mapas com outros profissionais e o público
+
+
+O objetivo geral deste projeto é desenvolver um sistema de análise e visualização de dados meteorológicos que permita a criação de mapas temáticos personalizados. Para isso, serão realizadas as seguintes etapas: preparação dos dados, que envolve a coleta, o armazenamento e a limpeza dos dados provenientes de diferentes fontes; tratamento dos dados, que consiste na aplicação de técnicas estatísticas e de aprendizado de máquina para extrair informações relevantes e identificar padrões e tendências; e visualização dos dados, que abrange o uso de ferramentas gráficas e interativas para apresentar os resultados da análise e facilitar a compreensão dos fenômenos meteorológicos.
+
+
+
+Os objetivos específicos deste projeto são os seguintes:
+- i) Coletar dados meteorológicos de diferentes regiões do Brasil a partir do repositório ECMWF.
+- ii) Tratar os dados coletados para eliminar possíveis inconsistências, ruídos ou valores faltantes, utilizando técnicas de limpeza e padronização de dados.
+- iii) Caracterizar os dados meteorológicos de acordo com as variáveis de interesse, como temperatura, umidade, precipitação, vento e radiação solar, e analisar as suas distribuições estatísticas e correlações.
+- iv) Visualizar os dados meteorológicos em gráficos, mapas e tabelas, utilizando ferramentas de visualização de dados, como o Matplotlib, o Seaborn e o Folium, e explorar os padrões e tendências dos dados.
